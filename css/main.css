@@ -1,0 +1,147 @@
+/*il y avait en plus overflow-y:hidden mais il genait la tooltip*/
+html{
+	font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;
+}
+
+html, body {
+height: 100%;
+}
+
+.csstransforms #wrap {
+width: 100%;
+position: fixed;
+}
+
+.csstransforms #offset {
+width: 100%;
+}
+.csstransforms #container {
+  position: relative;
+  z-index:1;
+  top: 0;
+}
+
+.csstransforms #content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#content div {
+  display: none;
+}
+
+/**** Base ****/
+
+body {
+  text-align:center;
+  color: black;
+  min-width: 800px;
+}
+
+section{
+  z-index:3;
+  position:relative;
+}
+section img{
+  min-width:10%;
+  max-height:80%;
+  opacity:0.95;
+}
+
+section a{
+  font-size:12px;
+  display:inline-block;
+}
+section p{
+  font-size:12px;
+  display:block;
+}
+
+
+::-moz-selection{ background: blue; color:yellow; text-shadow: 1px 1px red; }
+::selection { background: blue; color:yellow; text-shadow: 1px 1px red}
+
+/***************** No Transforms *****************/
+
+.no-csstransforms #container,
+.no-js #container {
+  position: relative;
+}
+
+.no-csstransforms #content section,
+.no-js #content section {
+  width: 100%;
+  height: 540px;
+
+  position: relative;
+}
+
+/***************** Transforms  *****************/
+
+.csstransforms #content {
+  width: 500px;
+}
+.csstransforms #content section {
+  width: 500px;
+  height: 100%;
+  position: absolute;
+  padding-top:5%;
+  margin:0;
+  }
+
+/***************** True 3d  *****************/
+
+.csstransforms3d #environment {
+  -webkit-perspective: 500px;
+  -webkit-perspective-origin: center 200px;
+  -moz-perspective: 500px;
+  -moz-perspective-origin: center center;
+  -o-perspective: 500px;
+  -o-perspective-origin: center 200px;
+  perspective: 500px;
+  perspective-origin: center 200px;
+  width: 500px;
+  margin: 0 auto;
+  height: 500px;
+}
+
+.csstransforms3d #content {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.csstransforms.no-touch #scroll-proxy { height: 5400px; }
+.csstransforms.no-touch .sign-up #scroll-proxy { height: 0; }
+
+
+.no-csstransforms3d #wrap {
+  position: relative !important;
+}
+.no-csstransforms3d #environment {
+  position: relative !important;
+}
+.no-csstransforms3d #content {
+  position: relative !important;
+  margin: 0 auto;
+}
+.no-csstransforms3d section {
+  margin: 0 auto;
+  position: relative !important;
+  display: inline-block !important;
+}
+#old-browser {
+  display: none;
+}
+.no-csstransforms3d #old-browser {
+  display: block;
+}
+.no-csstransforms3d #content div {
+  display: block;
+}
+
+.wrapper{
+	position: absolute !important;
+}

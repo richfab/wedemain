@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>WE Demain</title>
+            
+        <!--Pour la carte-->
+        <script type="text/javascript" src="d3-js/topojson.v1.min.js"></script>
+        <script type="text/javascript" src="d3-js/datamaps.world.min.js"></script>
+            
+        <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+            
+        <!-- Pour detecter les éléments dans le viewport et lancer l'animation au bon moment -->
+        <script type="text/javascript" src="d3-js/jquery.viewport.js"></script>
+            
+        <!-- Librairie D3 -->
+        <script type="text/javascript" src="d3-js/d3.min.js"></script>
+            
+        <!-- Pour le travelling avant -->
+        <script src="zoomcomic-js/modernizr.js"></script>
+        <script src="zoomcomic-js/main.js"></script>
+            
+        <!-- Pour le scroll horiz -->
+        <script src="horiz-js/jquery.mousewheel.js"></script>
+        <script src="horiz-js/scroll.js"></script>
+            
+        <!---- Pour le tooltip --->
+        <link rel="stylesheet" type="text/css" href="css/tooltipster.css" />
+        <script src="js/jquery.tooltipster.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.tooltip').tooltipster({
+                    maxWidth:200
+                }
+                        );
+            });
+        </script>
+            
+        <!--Pour le style-->    
+        <link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="css/style.css" media="all" rel="stylesheet" type="text/css" />
+            
+        <!--[if lt IE 9]>
+        <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]--> 
+            
+            
+    </head>
+    <body>
+        <div id="titre" class="intro-outro">
+            <div class="strut"></div>
+            <div id="titre-post" class="post">
+                <img id="factureenergetique" src="img/factureenergetique.png" />
+                <a id="liencliquez" onclick="leverTitre();">
+                    <img src="img/cliquez.png" />
+                </a>
+            </div>
+        </div>
+            
+        <div id="conclusion" class="intro-outro" style="display: none">
+            <div class="strut"></div>
+            <div class="post">
+                <div id="recommandez">
+                    <img src="img/recommandez.png"/>
+                </div>
+                <div id="conclu-partage">
+                    <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.wedemain.fr" target="_blank">
+                        <img id="twt" class="image" src="img/twitter.png" />
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.wedemain.fr" target="_blank">
+                        <img id="fb" class="image" src="img/facebook.png" />						
+                    </a>
+                </div>
+                <div id="credits">
+                    <div id="credits-partenaires">
+                        <h4 class="credit-title">PARTENAIRES</h4>
+                        <ul>
+                            <li>We Demain</li>
+                            <li>Green Code Lab</li>
+                            <li>Open Odyssey</li>
+                        </ul>
+                    </div>
+                    <div id="credits-journalisme">
+                        <h4 class="credit-title">JOURNALISME</h4>
+                        <ul>
+                            <li>Claire Vayer</li>
+                            <li>Hugo Pasco</li>
+                            <li>Robin Schönfeld</li>
+                        </ul>
+                    </div>
+                    <div id="credits-graphisme">
+                        <h4 class="credit-title">GRAPHISME</h4>
+                        <ul>
+                            <li>Axel Bizon</li>
+                            <li>Philippine Morin</li>
+                            <li>Simon Legeard</li>
+                        </ul>
+                    </div>
+                    <div id="credits-developpement">
+                        <h4 class="credit-title">DÉVELOPPEMENT</h4>
+                        <ul>
+                            <li>Fabien Richard</li>
+                            <li>Valentin Lhommeau</li>
+                            <li>Kostandin Tahiri</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="recommencer">
+                    <a onclick="leverTitre();">
+                        Recommencer
+                    </a>
+                </div>
+            </div>
+        </div>
+            
+            
+        <div id="travelling">
+            <div id="wrap">
+                <div id="container" style="margin-top: 10%;">
+                    <div id="title">
+                        <p id="old-browser">
+                            3D transforms are supported in newer browsers.
+                        </p>
+                        <div id="environment">
+                            <div id="content">
+                                <section>
+                                    <p><img src="img/last.png" alt="" /></p>
+                                </section>
+                                <section>
+                                    <p><img src="img/last.png" alt="" /></p>
+                                </section>
+                                <section>
+                                    <p><img src="img/nuages1.png" alt="" /></p>
+                                </section>
+                                <section>
+                                    <p><img src="img/nuages2.png" alt="" /></p>
+                                </section>
+                                <section>
+                                    <p><img src="img/nuages3.png" alt="" /></p>
+                                </section>
+                                <section>
+                                    <p><img src="img/quartier.png" alt="" /></p>
+                                </section>
+                                <section>
+                                    <p><img src="img/fenetre.png" alt="" /></p>
+                                </section>
+                                <section>
+                                    <p><img src="img/mecdedos.png" alt="" /></p>
+                                </section>
+                                <section>
+                                    <p><img src="img/chutelibre.png" alt="" /></p>
+                                </section>
+                                <section>
+                                    <p><img id="spirale-img" src="img/spirale.png" /></p>
+                                </section>
+                                <section>
+                                    <p><img src="img/last.png" /></p>
+                                </section>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>
+            
+        <div class="infobulle left" id="intro1">
+            <img height="150" src="img/texteintro01.png"/>
+        </div>
+        <div class="infobulle right" id="intro2">
+            <img height="150" src="img/texteintro02.png"/>
+        </div>
+        <div class="infobulle right" id="conclu1">
+            <img height="150" src="img/texteconclu01.png"/>
+        </div>
+        <div class="infobulle left" id="conclu2">
+            <img height="150" src="img/texteconclu02.png"/>
+        </div>
+        <div class="infobulle right" id="conclu3">
+            <img height="150" src="img/texteconclu03.png"/>
+        </div>
+            
+        <div id="bouton-continuer" onclick="activateHorizontalScroll();">
+            <a>CONTINUER <img src="img/chevron-droit.png" /></a>
+        </div>
+            
+        <div id="bouton-retour" onclick="activateHorizontalScroll();">
+            <a><img src="img/chevron-gauche.png" /> REVENIR</a>
+        </div>
+            
+        <div id="horizontal" style="display:none;">
+            
+            <div id="pre-presentation" class="transition horizontal-limit"></div>
+                
+            <div id="presentation" class="transition">
+                <div class="strut"></div>
+                <div class="post">
+                    <img id="pres" src="img/presentation.png" />
+                    <h2 id="ptqd">QUAND VOUS AFFICHEZ UNE PAGE WEB, VOTRE ORDINATEUR<br/>
+                        CONSOMME DE L'ÉNERGIE, ET TOUTES LES PAGES NE SE VALENT PAS.</h2>
+                    <h2 id="ptctn">certaines sont plus chargées, plus lourdes, plus riches, plus énergivores</h2>
+                    <img id="ptpm" src="img/petitmotif.png" />
+                    <h3 id="ptzoom">ZOOM SUR 3 SITES</h3>
+                    <div id="logos">
+                        <div id="lm" class="ptlogos"><img src="img/lemonde.png" /><h4 class="ptnoms">LE MONDE</h4></div>
+                        <div id="dm" class="ptlogos"><img id="marmiton" src="img/marmiton.png" /><h4 class="ptnoms">MARMITON</h4></div>
+                        <div id="lbc" class="ptlogos"><img src="img/leboncoin.png" /><h4 class="ptnoms">LEBONCOIN</h4></div>
+                    </div>
+                    <h5 id="ptdon">Données récoltées par Green Code Lab sur <a href="http://www.webenergyarchive.com/"> WEA (webenergyarchive)</a></h5>
+                </div>
+            </div>
+                
+                
+                
+            <div class="arrow-container dark">
+                <div class="strut"></div>
+                <div class="post no-left-margin">
+                    <div class="arrow"></div>
+                </div>
+            </div>
+                
+            <div id="section1" class="section">
+                
+                <div class="strut"></div>
+                <div class="post">
+                    
+                    <h2 class="section-title">
+                        <img class="petitcarretitre" src="img/petitcarretitre.png" />
+                        Comment et pourquoi le web consomme ?
+                        <img class="petitcarretitre" src="img/petitcarretitre.png" />
+                    </h2>
+                        
+                    <h4 style="margin-bottom: 50px;">L'énergie consommée par le Web se répartie en 3 domaines :<br/> la consommation de l'ordinateur, du serveur et du voyage de l'information.</h4>
+                        
+                    <div class="chart" id="section1-chartConsommation" style="min-width: 500px; min-height: 230px;"></div>
+                    <div class="limit" id="section1-chart-limit" style="height:30px;"></div>
+                    <div id="section1-legend">
+                        <div>
+                            <div class="section1-legend-color" id="section1-legend-color-client"></div>
+                            <div class="section1-legend-name" id="section1-legend-name-client"><a>ORDINATEUR</a></div>
+                        </div>
+                        <div id="section1-legend-milieu">
+                            <div class="section1-legend-color" id="section1-legend-color-trajet"></div>
+                            <div class="section1-legend-name" id="section1-legend-name-trajet"><a>VOYAGE DES DONNÉES</a></div>
+                        </div>
+                        <div>
+                            <div class="section1-legend-color" id="section1-legend-color-serveur"></div>
+                            <div class="section1-legend-name" id="section1-legend-name-serveur"><a>SERVEUR</a></div>
+                        </div>
+                    </div>
+                    <div id="section1-websiteList">
+                        <a id="section1-websiteLi1" class="website site0 left selected">LEMONDE</a>
+                        <a id="section1-websiteLi2" class="website site1">MARMITON</a>
+                        <a id="section1-websiteLi3" class="website site2 right">LEBONCOIN</a>
+                    </div>
+                        
+                </div>
+                    
+            </div>
+                
+            <div class="arrow-container">
+                <div class="strut"></div>
+                <div class="post no-left-margin">
+                    <div class="arrow bright"></div>
+                </div>
+            </div>
+                
+            <div id="section2" class="section">
+                
+                <div class="strut"></div>
+                <div class="post">
+                    <h2 class="section-title">
+                        <img class="petitcarretitre" src="img/petitcarretitre.png" />
+                        Quantité de données téléchargées & consommation
+                        <img class="petitcarretitre" src="img/petitcarretitre.png" />
+                    </h2>
+                        
+                    <div id="section2-websiteList">
+                        
+                        <ul id="section2-webisteUl">
+                            
+                        </ul>
+                            
+                    </div>
+                        
+                    <div id="section2-charts">
+                        
+                        <div class="section2-data-container">
+                            
+                            <div id="section2-bar-chart-container"><div class="chart" id="section2-bar-chart" style="min-height:150px;"></div></div>
+                            <div class="limit" id="section2-bar-chart-limit" style="height:30px;"></div>
+                        </div>
+                            
+                            
+                            
+                        <div class="section2-data-container">
+                            
+                            <div class="limit" id="section2-sunburst-chart-limit" style="height:30px;"></div>
+                            <div class="chart" id="section2-sunburst-chart" style="min-height:150px;"></div>        
+                        </div>
+                            
+                    </div>
+                        
+                    <div id="section2-data">
+                        
+                        <div class="section2-data-container">
+                            <span style="font-size: 2em;color: #CAC09C;" id="section2-dataQuantiteDonnees" class="section2-data tooltip" title="Données collectées sur la base de 10000 visites de 40 secondes"></span>
+                            <span style="font-size: 2em;" id="section2-bar-chart-unit">Mo</span>
+                            <span style="font-size: 2em;" id="section2-bar-chart-usb-text">SOIT</span>
+                            <span style="font-size: 5em;color: #F2D24C;" id="section2-bar-chart-usb-number"></span>
+                            <span id="section2-bar-chart-usb-unit"><img  class="tooltip" title="Clé USB de 1Go" src="img/cleusb.png"/></span>
+                        </div>
+                            
+                        <div class="section2-data-container" id="section2-data-container-lower">
+                            <div style="font-size: 2em;color: #CAC09C;" id="section2-dataConsommation" class="section2-data tooltip" title="Données collectées sur la base de 10000 visites visite de 40 secondes"></div>
+                            <div style="font-size: 2em;" id="section2-bar-chart-unit">Wh</div>
+                            <span style="font-size: 2em;" id="section2-bar-chart-ampoule-text">SOIT</span>
+                            <span style="font-size: 5em;color: #A93721;" id="section2-bar-chart-ampoule-number"></span>
+                            <span id="section2-bar-chart-ampoule-unit"><img  class="tooltip" title="Ampoule de 60W" src="img/ampoule.png"/></span>
+                        </div>
+                        
+                        <div id="section2-dataAmpoules-lower">
+                            <span style="font-size: 1.5em;">ALLUMÉES PENDANT </span><span style="font-size: 2.5em;">1H</span>
+                        </div>
+                            
+                    </div>
+                        
+                </div>
+            </div>
+                
+            <div id="section3" class="section">
+                
+                <div class="strut"></div>
+                <div class="post">
+                    <h2 class="section-title">
+                        <img class="petitcarretitre" src="img/petitcarretitre.png" />
+                            D'autres sites consommateurs
+                        <img class="petitcarretitre" src="img/petitcarretitre.png" />
+                    </h2>
+                        
+                    <div id="section3-websiteList">
+                        
+                        <ul id="section3-webisteUl">
+                        </ul>
+                            
+                    </div>
+                        
+                    <div id="section3-chartConsommation">
+                        
+                        <div style="font-size: 2.5em" id="section3-selectedWebsite"></div>
+                        <div id="section3-dataConsommation" style="font-size: 2.5em;color: #F2D24C;">
+                            <div class="tooltip" title="Données collectées sur la base de 10000 visites visite de 40 secondes" id="section3-valeurConsommation"></div><div> Wh</div>
+                        </div>
+                        <div id="section3-dataAmpoules">
+                            <div style="font-size: 2.5em" ><a>SOIT </a></div><div style="font-size: 5em;color: #A93721;" id="section3-nombreAmpoules"></div><div id="ampouleImg"><img  class="tooltip" title="Ampoule de 60W" src="img/ampoule.png"/></div>
+                        </div>
+                        <div id="section3-dataAmpoules-lower" style="margin-top: -80px;">
+                            <span style="font-size: 1.3em;">ALLUMÉES PENDANT </span><span style="font-size: 2em;">1H</span>
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+                
+            <div id="transition4" class="transition">
+                <div class="strut"></div>
+                <div class="post">
+                    <img src="img/tourdumonde.png"/>
+                </div>
+            </div>
+                
+            <div class="arrow-container">
+                <div class="strut"></div>
+                <div class="post no-left-margin">
+                    <div class="arrow"></div>
+                </div>
+            </div>
+                
+            <div id="section4" class="section">
+                
+                <div class="strut"></div>
+                <div class="post">
+                    
+                    <div class="limit" id="section4-map-limit" style="height:30px;"></div>
+                    <!--Les dimensions du conteneur doivent être en pixels pour que la carte d'affiche correctement-->
+                    <div id="section4-map" style="position:relative;display: inline-block; width: 800px; height:500px"></div>
+                    <div id="section4-websiteList">
+                        <ul id="section4-websiteUl">
+                            <li id="section4-websiteLi1" class="website site0 left" data-url="data/section4-lemonde.csv" data-index="0" distance="1221235">LEMONDE</li>
+                            <li id="section4-websiteLi2" class="website site1" data-url="data/section4-marmiton.csv" data-index="1" distance="299161">MARMITON</li>
+                            <li id="section4-websiteLi3" class="website site2 right" data-url="data/section4-leboncoin.csv" data-index="2" distance="24691">LEBONCOIN</li>
+                        </ul>
+                    </div>
+                    <div id="section4-data-distance">
+                        <div id="section4-data-distance-texte1">
+                            <h5>
+                                <span style="font-size: 1.5em;vertical-align: top">IL FAUT PARCOURIR</span>
+                                <span style="font-size: 3em;color:#F2D24C;line-height: 40px;" id="section4-distance"></span>
+                                <span style="color:#F2D24C;font-size: 1.5em;">KM</span><span style="font-size: 1.5em;"> POUR EFFECTUER UNE REQUÊTE</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div id="section4-data-terre-lune">
+                        <div id="section4-data-terre-lune-texte1">
+                            <h5>
+                                <span style="font-size: 1.5em;">SOIT</span>
+                                <span style="font-size: 4em;color:#A93721;line-height: 40px;" id="section4-terre-lune"></span>
+                                <span style="font-size: 1.5em"> <span style="color:#A93721;">FOIS</span> LE TOUR DE LA TERRE</span>
+                            </h5>
+                        </div>
+                    </div>
+                        
+                        
+                </div>
+            </div>
+                
+            <div id="transition5" class="transition">
+                <div class="strut"></div>
+                <div class="post">
+                    <img src="img/bienlourd.png"/>
+                </div>
+            </div>
+                
+            <div class="arrow-container">
+                <div class="strut"></div>
+                <div class="post no-left-margin">
+                    <div class="arrow"></div>
+                </div>
+            </div>
+                
+            <div id="section5" class="section">
+                
+                <div class="strut"></div>
+                <div class="post">
+                    
+                    <h2 class="section-title">
+                        <img class="petitcarretitre" src="img/petitcarretitre.png" />
+                        Consommation à grande échelle
+                        <img class="petitcarretitre" src="img/petitcarretitre.png" />
+                    </h2>
+                        
+                    <div id="section5-image-list">
+                        <ul id="section5-image-Ul">
+                            <li class="image left"><img src="img/logo-personne.png"/></li>
+                            <li><img src="img/logo-quartier.png"/></li>
+                            <li class="image right"><img src="img/logo-ville.png"/></li>
+                        </ul>
+                    </div>
+                        
+                    <div id="section5-place-list">
+                        <ul id="section5-place-Ul">
+                            
+                        </ul>
+                    </div>
+                    <div id="section5-data-left">
+                        <div id="pourunan" style="vertical-align: top;">
+                            <div><span style="font-size: 1.5em;">POUR 1 AN</span></div>
+                            <div><span style="font-size: 1.5em;">DE NAVIGATION</span></div>
+                        </div>
+                        <div id="section5-data-values">
+                            <span style="font-size: 2em;color: #F2D24C;line-height: 40px;float: left;" id="section5-dataConsommation-number"></span>
+                            <span style="font-size: 1.5em;color: #F2D24C;float: left;">Wh</span>
+                        </div>
+                    </div>
+                    <div id="section5-data-right-container">
+                        <div id="section5-data-right">
+                            <span style="font-size: 2.5em;">SOIT</span>
+                            <span style="font-size: 4.5em;color: #A93721;" id="section5-dataAmpoules-number"></span>
+                            <span style="font-size: 1.5em;"><img  class="tooltip" title="Ampoule de 60W" src="img/ampoule.png"/></span>
+                        </div>
+                        <div id="section5-data-right-lower">
+                            <span style="font-size: 1.5em;">ALLUMÉES PENDANT 1H</span>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+                
+            <div id="post-last-section" class="transition horizontal-limit"></div>
+                
+        </div>
+            
+        <footer>
+            <div  id="bleft" class="bloc">
+                <a id="wd" class="liens" href="http://www.wedemain.fr">WE DEMAIN</a>
+                <div class="barre"></div>
+                <a id="gcl" class="liens" href="http://www.greencodelab.fr">GREEN CODE LAB</a>
+                <div class="barre"></div>
+                <a id="oo" class="liens" href="http://www.open-odyssey.org">OPEN ODYSSEY</a>
+            </div>
+                
+            <div id="bright" class="bloc">
+                <a id="partagesur">
+                    PARTAGE SUR
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.wedemain.fr" target="_blank">
+                    <img id="twt" class="image" src="img/twitter.png" />
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.wedemain.fr" target="_blank">
+                    <img id="fb" class="image" src="img/facebook.png" />						
+                </a>
+<!--                <a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wedemain.fr" target="_blank">
+                    <img id="gp" class="image" src="img/googleplus.png" />						
+                </a>-->
+            </div>
+                
+            <div id="navigation">
+                <div onclick="scrollToTextIntro(-1);" class="point-navigation selected"></div>
+                <div onclick="scrollToTextIntro(280);" id="pn-intro1" class="point-navigation tooltip"></div>
+                <div onclick="scrollToTextIntro(1080);" id="pn-intro2" class="point-navigation tooltip"></div>
+                <div onclick="scrollToSection($('#presentation'));" id="pn-presentation" class="point-navigation tooltip" title="Présentation"></div>
+                <div onclick="scrollToSection($('#section1'));" id="pn-section1" class="point-navigation tooltip" title="Comment et pourquoi le web consomme ?"></div>
+                <div onclick="scrollToSection($('#section2'));" id="pn-section2" class="point-navigation tooltip" title="Quantité de données téléchargées et consommation"></div>
+                <div onclick="scrollToSection($('#section3'));" id="pn-section3" class="point-navigation tooltip" title="D'autres sites consommateurs"></div>
+                <div onclick="scrollToSection($('#transition4'));" id="pn-transition4" class="point-navigation tooltip" title="Le tour du monde en 80 clics"></div>
+                <div onclick="scrollToSection($('#transition5'));" id="pn-transition5" class="point-navigation tooltip" title="Consommation à grande échelle"></div>
+                <div onclick="scrollToTextOutro(1070);" id="pn-conclu1" class="point-navigation"></div>
+                <div onclick="scrollToTextOutro(600);" id="pn-conclu2" class="point-navigation"></div>
+                <div onclick="scrollToTextOutro(100);" id="pn-conclu3" class="point-navigation"></div>
+                <div onclick="scrollToTextOutro(-1);" class="point-navigation"></div>
+            </div>
+                
+                
+                
+        </footer>
+            
+        <script type="text/javascript" src="d3-js/tools.js"></script>
+        <script type="text/javascript" src="d3-js/section1-d3.js"></script>
+        <script type="text/javascript" src="d3-js/section2-d3.js"></script>
+        <script type="text/javascript" src="d3-js/section3-d3.js"></script>
+        <script type="text/javascript" src="d3-js/section4-d3.js"></script>
+        <script type="text/javascript" src="d3-js/section5-d3.js"></script>
+            
+        <script>
+            //                        activateHorizontalScroll();
+        </script>
+    </body>
+</html>
