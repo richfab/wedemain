@@ -137,7 +137,7 @@
                 $(this).addClass('selected');
                 
                 //les donnees sont mises a jour
-                $("#section4-distance").text($(this).attr('distance'));
+                $("#section4-distance").text(dataNumberToNice($(this).attr('distance')));
                 $("#section4-terre-lune").text(dataNumberToNice($(this).attr('distance')/circonferenceTerre));
             });
         });
