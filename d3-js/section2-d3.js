@@ -26,8 +26,11 @@
                 
                 $("#section2-bar-chart-limit:in-viewport").each(function() {
                     chartHasBeenShowed = true;
+                    //barChart init
                     init();
                     displayFirstWebsite();
+                    //sunbusrt init
+                    render(convertedDataSet, false);
                 });
                 
             }
@@ -108,23 +111,6 @@
                 bars.attr("class","bar animationComplete");
             }, animationDuration+delayDuration*dataset.length);
         }
-        
-        //////////////////////SUNBURST/////////////////
-        
-        //variable pour ne lancer la transition du chart1 que une fois
-        var arcChartHasBeenShowed = false;
-        
-        $(window).bind("scroll", function(event) {
-            
-            if(!arcChartHasBeenShowed){
-                
-                $("#section2-sunburst-chart-limit:in-viewport").each(function() {
-                    arcChartHasBeenShowed = true;
-                    render(convertedDataSet, false);
-                });
-                
-            }
-        });
         
         var datasetInit = [0,0,0];
         var convertedDataSet = [];
