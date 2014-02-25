@@ -19,6 +19,10 @@ var consommationAmpoule = 60;
             //on selectionne le site correspondant
             $(this).addClass("selected");
             
+            //on deplace le chevron
+            $(".section5-websiteLi img.chevron-slector").css("visibility","hidden");
+            $(this).children("img").css("visibility","visible");
+            
             //on change les données
             //sa consammation
             $("#section5-dataConsommation-number").text(dataNumberToNice(d.dataConsommation));
@@ -39,8 +43,8 @@ var consommationAmpoule = 60;
                 .append("li");
         
         websiteLis
-                .text(function(d){
-                    return d.name;
+                .html(function(d){
+                    return '<img class="chevron-slector" src="img/chevron-droit.png"/><span class="website">'+d.name+'</span>';
         })
                 .attr("class", function(d,i){
                     
@@ -86,7 +90,8 @@ var consommationAmpoule = 60;
         
         //selectionne le premier site
         changeWebsite(dataset[0]);
-        $('#section5-webisteUl li:first').addClass('selected');
+        $('#section5-place-Ul li:first').addClass('selected');
+        $('#section5-place-Ul li:first').children("img").css("visibility","visible");
     });
     
 })();

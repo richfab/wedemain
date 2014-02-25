@@ -134,6 +134,26 @@ footer .point-navigation.selected{
     margin: 0 auto;
 }
 
+#navigation-help, #navigation-help-out{
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    -webkit-transition: all 500ms ease;  
+    -moz-transition: all 500ms ease;  
+    -o-transition: all 500ms ease;  
+    transition: all 500ms ease;
+}
+
+#navigation-help.opened, #navigation-help-out.opened{
+    bottom: 75px;
+}
+
+#navigation-help *, #navigation-help-out *{
+    display: inline-block;
+}
+
 .infobulle{
     position: fixed;
     bottom: 50%;
@@ -168,6 +188,12 @@ footer .point-navigation.selected{
     right:50px;
 }
 
+.revenir-continuer{
+    color: #CAC09C;
+    font-size: 1.5em;
+    font-family: Tw;
+}
+
 #bouton-continuer, #bouton-retour{
     position: fixed;
     top: 50%;
@@ -176,12 +202,10 @@ footer .point-navigation.selected{
 
 #bouton-continuer{
     right: 10px;
-    color: #CAC09C;
 }
 
 #bouton-retour{
     left: 10px;
-    color: #CAC09C;
 }
 
 #spirale-div{
@@ -202,7 +226,6 @@ footer .point-navigation.selected{
 
 /*PARTIE HORIZONTALE*/
 ul, li {
-    text-align: center;
     list-style-type: none;
     cursor: pointer;
 }
@@ -225,7 +248,7 @@ li.image.right, li.website.right, a.website.right{
     float: right;
 }
 
-li.website, a.website{
+.websiteUlNoTooltip li.website, span.website, a.website{
     background-color: #071B1F;
     padding: 3px;
     padding-left: 10px;
@@ -234,13 +257,13 @@ li.website, a.website{
     font-size: 1.3em;
 }
 
-li.website.selected.site0, a.website.selected.site0{
+.websiteUlNoTooltip li.website.selected.site0, span.website.selected.site0, a.website.selected.site0{
     background-color: #A93721;
 }
-li.website.selected.site1, a.website.selected.site1{
+.websiteUlNoTooltip li.website.selected.site1, span.website.selected.site1, a.website.selected.site1{
     background-color: #CF8F0B;
 }
-li.website.selected.site2, a.website.selected.site2{
+.websiteUlNoTooltip li.website.selected.site2, span.website.selected.site2, a.website.selected.site2{
     background-color: #FCCE19;
 }
 
@@ -261,9 +284,10 @@ li.website.selected.site2, a.website.selected.site2{
 }
 
 #horizontal{
-    width: 7200px;
+    width: 7600px;
     height: 100%;
     overflow-y: hidden;
+    font-size: 0.8em;
 }
 
 .section, .transition, .arrow { 
@@ -273,7 +297,7 @@ li.website.selected.site2, a.website.selected.site2{
 }
 
 .section{
-    min-width: 1000px;
+    min-width: 900px;
     background-color: #122A30;
 }
 
@@ -284,11 +308,22 @@ h2.section-title{
     position: absolute;
     top: 50px;
     min-width: 700px;
+    z-index: 2;
+}
+
+h3.section-sub-title{
+    font-family: helvetica;
+    font-weight: 100;
+    color: white;
+    position: absolute;
+    top: 100px;
+    min-width: 700px;
+    z-index: 2;
 }
 
 .transition{
-    min-width: 400px;
-    background-color: #071B1F;
+    min-width: 250px;
+    background-color: #16353A;
 }
 
 .arrow-container{
@@ -303,7 +338,7 @@ h2.section-title{
     height: 0; 
     border-top: 30px solid transparent;
     border-bottom: 30px solid transparent;
-    border-left: 30px solid #071B1F;
+    border-left: 30px solid #16353A;
 }
 
 .post.no-left-margin{
@@ -316,6 +351,7 @@ h2.section-title{
 
 #post-last-section{
     min-width: 200px;
+    background-color: #122A30;
 }
 
 .chart, .limit{
@@ -329,13 +365,17 @@ h2.section-title{
     margin-right: 10px;
 }
 
+.chevron-slector{
+    visibility: hidden;
+}
+
 /*PRESENTATION*/
 #presentation {
     width: auto;
     text-align: center;
     float: left;
-    padding-right: 200px;
-    padding-left: 200px;
+    padding-right: 100px;
+    padding-left: 100px;
 }
 #presentation .post{
     margin-left: 120px;
@@ -345,7 +385,8 @@ h2.section-title{
 #presentation #pres {
     height: 30px;
 }
-#presentation h2, #presentation h4, #presentation h5 {
+
+h2, h3, h4, h5 {
     color: white;
     font-weight: 100;
     font-family: Oswald;
@@ -397,8 +438,8 @@ h2.section-title{
 }
 
 /*SECTION 1*/
-#section1 h2.section-title{
-    min-width: 650px;
+#section1 h2.section-title, #section1 h3.section-sub-title{
+    min-width: 500px;
 }
 
 #section1 h4 {
@@ -413,6 +454,11 @@ h2.section-title{
     cursor:pointer;
 }
 
+#section1-categoryList img{
+    vertical-align: sub;
+    margin-right: 5px;
+}
+
 .arrow-container.dark{
     background-color: transparent;
 }
@@ -421,56 +467,44 @@ h2.section-title{
     border-left: 30px solid #10262B;
 }
 
-#section1-legend{
-    display: inline-block;
-    text-align: left;
-}
-
-.section1-legend-color, .section1-legend-name{
-    display: inline-block;
-}
-
-.section1-legend-color{
-    width: 10px;
-    height: 10px;
-    background-color: red;
-}
-
 #section1 h5 {
     font-family: Oswald;
     font-weight: 100;
     margin-top: 40px;
     margin-bottom: 40px;
 }
-#section1 #section1-legend {
-    display: inline-block;
-    vertical-align: top;
-}
-.section1-legend-name {
-    font-family: Oswald;
-    font-weight: 100;
-    font-size: 15px;
-    color: #CEC29B;
-}
 
-.section1-legend-name.selected{
-    color: white;
-}
-
-#section1 #section1-websiteList {
+#section1 #section1-categoryList {
     margin-top: 50px;
 }
 
+#section1-categoryList .selected{
+    background-color: #FCCE19;
+}
 
-#section1 #section1-legend-milieu {
-    margin-top: 15px;
-    margin-bottom: 15px;
+#section1-chartConsommation path.selected{
+    fill: #FCCE19;
+}
+
+#section1-chartConsommation .client{
+    fill:grey;
+}
+#section1-chartConsommation .trajet{
+    fill:lightgoldenrodyellow;
+}
+#section1-chartConsommation .serveur{
+    fill:darkgrey;
+}
+
+.section1-percentage{
+    font-size: 4em;
+    fill: white;
 }
 
 
 /*SECTION 2*/
 
-#section2-charts, #section2-websiteList, #section2-data{
+#section2-charts, #section2-data{
     display: inline-block;
     vertical-align: middle;
 }
@@ -480,13 +514,15 @@ h2.section-title{
     font-size: 0.8em;
 }
 
-#section2-charts{
-    margin-left: 80px;
+#section2-webisteUl, #section2bis-webisteUl{
+    width: 700px;
+    margin-top: 70px;
 }
 
-#section2-webisteUl li{
-    margin-top: 80px;
-    margin-bottom: 80px;
+#section2-webisteUl li, #section2bis-webisteUl li{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .section2-data-container div{
@@ -528,6 +564,7 @@ h2.section-title{
 
 #section3{
     min-width: 800px;
+    margin-left: -100px;
 }
 
 #section3 .section-title{
@@ -572,17 +609,26 @@ h2.section-title{
     color: white;
 }
 
+#section3-webisteUl{
+    text-align: left;
+}
+
 /*SECTION 4*/
 .hoverinfo{
     color:black;
 }
 
 #section4-data-distance{
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 #section4-data-terre-lune{
-    margin-top: 15px;
+    margin-top: 10px;
+}
+
+#section4-websiteUl li{
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /*SECTION 4 et 5*/
@@ -601,6 +647,8 @@ h2.section-title{
 #section4-websiteUl, #section5-place-Ul, #section5-image-list{
     width: 700px;
 }
+
+
 
 /*SECTION 5*/
 #section5-place-list{
@@ -628,6 +676,14 @@ h2.section-title{
     min-width: 500px;
 }
 
+.section5-websiteLi span{
+    margin-left: 8px;
+}
+
+#section5-image-Ul li{
+    cursor: auto;
+}
+
 /*CREDITS*/
 #conclusion .post{
     height: 100%;
@@ -653,7 +709,7 @@ h2.section-title{
 
 #credits{
     position: absolute;
-    bottom: 150px;
+    bottom: 170px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -663,10 +719,50 @@ h2.section-title{
     margin-top: 50px;
 }
 
-#recommencer{
-    position: absolute;
-    bottom: 75px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+#conclusion #bandeau {
+	width: 100%;
+	height: 150px;
+	position: absolute;
+	bottom: 0;
+	background-color: white;
+}
+#conclusion #bandeau div {
+	margin-top: 20px;
+}
+#conclusion li {
+	cursor: default;
+}
+#conclusion a {
+	color: white;
+}
+#conclusion .partenaires {
+	height: 50px;
+}
+#conclusion #bandeau-partenaires {
+	letter-spacing: 10px;
+}
+#conclusion .commons {
+	height: 40px;
+}
+#conclusion #bandeau-commons {
+	float: left;
+	margin-left: 60px;
+}
+#conclusion #hyblab {
+	height: 50px;
+	display: inline-block;
+	vertical-align: middle;
+}
+#conclusion #bandeau-hyblab {
+	float: right;
+	margin-right: 60px;
+}
+#conclusion #projet {
+	font-family: Oswald;
+	font-weight: 100;
+	letter-spacing: 2px;
+	font-size: 20px;
+	color: black;
+	display: inline-block;
+	vertical-align: middle;
 }

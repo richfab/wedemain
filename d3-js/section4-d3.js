@@ -21,24 +21,26 @@
     var nantes = {lat: 47.2309954, lon: -1.5626992};
     
     //variable de durée d'animation em ms
-    var animationDuration = 600;
+    var animationDuration = 2000;
     
     function mapInit(){
         
-        $("#section4-map").height($(window).height()/2);
-        $("#section4-map").width($(window).height());
+        var mapHeight = $(window).height()/2.25;
+        
+        $("#section4-map").height(mapHeight);
+        $("#section4-map").width(mapHeight*2);
         
         var map = new Datamap({
             
             element: document.getElementById('section4-map'),
             
             fills: {
-                defaultFill: 'white', //any hex, color name or rgb/rgba value
+                defaultFill: '#285C68', //any hex, color name or rgb/rgba value
                 cityFill: 'white'
             },
             geographyConfig: {
                 borderWidth: 1,
-                borderColor: 'white',
+                borderColor: '#285C68',
                 popupOnHover: false, //disable the popup while hovering
                 highlightOnHover: false
             }
@@ -110,7 +112,7 @@
                 arcOptions = {
                     strokeWidth: 2, 
                     strokeColor: chartColors[index], 
-                    arcSharpness: 1, 
+                    arcSharpness: 0.6, 
                     animationSpeed: animationDuration
                 };
                 
@@ -133,8 +135,8 @@
                         changeWebsiteMap($(this).attr('data-url'),$(this).attr('data-index'));
                 
                 //le nom du site est mis en valeur
-                $("#section4-websiteUl li").removeClass('selected');
-                $(this).addClass('selected');
+                $("#section4-websiteUl span").removeClass('selected');
+                $(this).children("span").addClass('selected');
                 
                 //les donnees sont mises a jour
                 $("#section4-distance").text(dataNumberToNice($(this).attr('distance')));

@@ -29,7 +29,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			},
 			functionReady: function(origin, tooltip) {},
 			functionAfter: function(origin) {},
-			icon: '(?)',
+			icon: '',
 			iconCloning: true,
 			iconDesktop: false,
 			iconTouch: false,

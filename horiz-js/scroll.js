@@ -6,6 +6,7 @@ var isHoriz = false;
 //taille du travelling
 var travellingHeight = 0;
 
+
 // Shorthand for $( document ).ready()
 $(function() {
     //on diminue la vitesse du scroll
@@ -16,12 +17,34 @@ $(function() {
         //on cache les tooltips
         $(".tooltip").tooltipster('hide');
     });
+    
+    //listeners pour les points de navigation lorsque le titre et la page de partage passent dans le viewport
+    $(window).bind("scroll", function(event) {
+        $("#titre:in-viewport").each(function() {
+            if((isZoomIn) && (!isHoriz)){
+                $(".point-navigation").removeClass("selected");
+                $("#pn-titre").addClass("selected");
+            }
+        });
+        
+        $("#conclusion:in-viewport").each(function() {
+            if((!isZoomIn) && (!isHoriz)){
+                $(".point-navigation").removeClass("selected");
+                $("#pn-conclu").addClass("selected");
+            }
+        });
+    });
 });
 
 //fonction qui permet de relever le l'intro-outro
 function leverTitre(){
+    //+60px pour passer la premiere section (last.png)
     var titreHeight = $(".intro-outro").height();
-    $("html, body").animate({scrollTop:titreHeight}, 1000);
+    $("html, body").animate({scrollTop:titreHeight+60}, 1000);
+    //on affiche l'aide a la navigation
+    if(isZoomIn){
+        $("#navigation-help").addClass("opened");
+    }
 }
 
 //fonction qui permet de se rendre a une section de n'importe ou
@@ -52,7 +75,7 @@ function scrollToTextOutro(distToScroll){
             var documentHeight = $(document).height();
             $("html, body").animate({scrollTop:documentHeight}, 1000,
             function(){
-                activateHorizontalScroll($("#post-last-section"),distToScrollUp);
+                activateHorizontalScroll($("#post-last-section"),distToScrollUp,false);
             });
         }
         else{
@@ -60,7 +83,7 @@ function scrollToTextOutro(distToScroll){
         }  
     }
     else{
-        activateHorizontalScroll($("#post-last-section"),distToScrollUp);
+        activateHorizontalScroll($("#post-last-section"),distToScrollUp,false);
     }
 }
 
@@ -79,7 +102,7 @@ function scrollToTextIntro(distToScroll){
             var documentHeight = $(document).height();
             $("html, body").animate({scrollTop:documentHeight}, 1000,
             function(){
-                activateHorizontalScroll($("#pre-presentation"),distToScrollUp);
+                activateHorizontalScroll($("#pre-presentation"),distToScrollUp,true);
             });
         }
         else{
@@ -87,9 +110,26 @@ function scrollToTextIntro(distToScroll){
         }  
     }
     else{
-        activateHorizontalScroll($("#pre-presentation"),distToScrollUp);
+        activateHorizontalScroll($("#pre-presentation"),distToScrollUp,true);
     }
 }
+
+//cette fonction clique sur pnToClick in si le travelling est en zoom avant, pnToClickOut sinon
+function scrollZoomInOrOut(pnToClickIn, pnToClickOut){
+    if(isZoomIn){
+        pnToClickIn.click();
+    }
+    else{
+        pnToClickOut.click();
+    }
+}
+
+//si l'élément responsable du clic n'est ni un a, ni un li, ni un span on clique le bouton passé en parametre
+//function clickToGoToNextSection(event, pnToClick){
+//    if((event.target.nodeName!='A')&&(event.target.nodeName!='LI')&&(event.target.nodeName!='SPAN')&&(event.target.nodeName!='IMG')){
+//        pnToClick.click();
+//    }
+//}
 
 //fonction qui permet d'afficher les boutons continuer et retour
 function displayButtonToHoriz(){
@@ -105,8 +145,8 @@ function displayButtonToHoriz(){
 
 //fonction qui permet d'activer le scroll horizontal
 //parametre section (optionnel) : permet de se rendre a la section après avoir activé le scroll horiz
-//paremetre distanceToScrollUp (optionnel) : permet de se scroller de la distance voulu apres l'activation du scroll horiz et le deplacement a la section
-function activateHorizontalScroll(section,distToScrollUp){
+//paremetre distanceToScrollUp (optionnel) : permet de scroller de la distance voulue apres l'activation du scroll horiz et le deplacement a la section
+function activateHorizontalScroll(section,distToScrollUp,wantToScrollUpZoomIn){
     
     isHoriz = true;
     
@@ -116,22 +156,23 @@ function activateHorizontalScroll(section,distToScrollUp){
         directionShow = 'left';
     }
     
+    //on s'assure d'avoir fermer les aides à la navigation
+    $("#navigation-help, #navigation-help-out").removeClass("opened");
+    
     $(".intro-outro").hide();
     $(".infobulle").removeClass("opened");
     $("#travelling").fadeOut(200);
     $("#horizontal").show('slide', { direction: directionShow }, 1500,
     function(){
         if(section!==undefined){
-            console.log(section.offset().left);
             $("html, body").animate({scrollLeft:section.offset().left}, 1000, 
             function (){
                 if(distToScrollUp!==undefined){
+                    //active le scrolling avant ou arriere
+                    activateTravelling(wantToScrollUpZoomIn);
                     $("html, body").animate({scrollTop:distToScrollUp}, 1000);
                 }
             });
-        }
-        else{
-            console.log("section nulle");
         }
     });
     
@@ -142,7 +183,7 @@ function activateHorizontalScroll(section,distToScrollUp){
     //la page reprend sa hauteur initiale
     $("body").css("height","inherit");
     
-    //le scroll horizontal modifie la position horizontale du viewport
+    //le scroll vertical modifie la position horizontale du viewport
     $("html, body").mousewheel(function(event, delta) {
         this.scrollLeft -= (delta * 5);
         event.preventDefault();
@@ -152,27 +193,6 @@ function activateHorizontalScroll(section,distToScrollUp){
     if(isZoomIn){
         $(window).scrollLeft(100);
     }
-    //force la position du scroll a 10px de la doite si on vient du zoomOut
-    else{
-        $(window).scrollLeft($(document).width() - $(window).width() - 100 );
-    }
-    
-    $(window).scroll(function () {
-        
-    	//detecte que l'utilisateur veut revenir au travelling arrière
-    	if (( $(document).scrollLeft() === ( $(document).width() - $(window).width() )) && isHoriz) {
-            console.log("activate zoom out");
-            isHoriz = false;
-            activateTravelling(false);
-    	}
-    	
-    	//detecte que l'utilisateur veut revenir au travelling avant
-        if (($(window).scrollLeft() === 0) && (isHoriz === true)) {
-            console.log("activate zoom in");
-            isHoriz = false;
-            activateTravelling(true);
-        }
-    });
 
     //listeners pour les points de navigation lorsque les sections passe dans le viewport
     $(window).bind("scroll", function(event) {
@@ -180,17 +200,21 @@ function activateHorizontalScroll(section,distToScrollUp){
             $(".point-navigation").removeClass("selected");
             $("#pn-transition5").addClass("selected");
         });
-        $("#transition4:in-viewport").each(function() {
-            $(".point-navigation").removeClass("selected");
-            $("#pn-transition4").addClass("selected");
-        });
         $("#section3:in-viewport").each(function() {
             $(".point-navigation").removeClass("selected");
             $("#pn-section3").addClass("selected");
         });
-        $("#section2:in-viewport").each(function() {
+         $("#transition2:in-viewport").each(function() {
             $(".point-navigation").removeClass("selected");
-            $("#pn-section2").addClass("selected");
+            $("#pn-transition2").addClass("selected");
+        });
+        $("#transition3:in-viewport").each(function() {
+            $(".point-navigation").removeClass("selected");
+            $("#pn-transition3").addClass("selected");
+        });
+        $("#transition4:in-viewport").each(function() {
+            $(".point-navigation").removeClass("selected");
+            $("#pn-transition4").addClass("selected");
         });
         $("#section1:in-viewport").each(function() {
             $(".point-navigation").removeClass("selected");
@@ -205,6 +229,8 @@ function activateHorizontalScroll(section,distToScrollUp){
 }
 
 function activateTravelling(wantZoomIn){
+    
+    isHoriz = false;
     
     isZoomIn = wantZoomIn;
     reverseScrolling(wantZoomIn);
@@ -222,6 +248,11 @@ function activateTravelling(wantZoomIn){
         introOutroToShow = $("#conclusion");
     }
     introOutroToShow.show();
+    
+    //on affiche l'aide a la navigation du zoom out
+    if(!wantZoomIn){
+        $("#navigation-help-out").addClass("opened");
+    }
     
     window.setTimeout(function(){  
         $("#travelling").fadeIn(1000);
@@ -243,7 +274,7 @@ function reverseScrolling(wantZoomIn){
     
     $("html, body").unbind('mousewheel');
     $("html, body").mousewheel(function(event, delta) {
-        this.scrollTop -= factor*(delta * 3);
+        this.scrollTop -= factor*(delta * 5);
         event.preventDefault();
     });
 }

@@ -122,10 +122,12 @@ window.requestAnimFrame = (function(){
                     
                     if(!isHoriz){
                         if(isZoomIn){
-                            if(hides.length==6){
+                            if(hides.length==5){
                                 $("#intro1").addClass("opened");
                                 $(".point-navigation").removeClass("selected");
                                 $("#pn-intro1").addClass("selected");
+                                //on cache l'aide a la navigation
+                                $("#navigation-help").removeClass("opened");
                             }
                             if(hides.length==4){
                                 $("#intro1").removeClass("opened");
@@ -223,6 +225,10 @@ window.requestAnimFrame = (function(){
                             }
                             if(hides.length==2){
                                 $("#conclu1").removeClass("opened");
+                            }
+                            if(hides.length==1){
+                                //on cache l'aide a la navigation
+                                $("#navigation-help-out").removeClass("opened");
                             }
                             if(hides.length==0){
                                 $("#conclu1").addClass("opened");

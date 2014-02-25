@@ -19,6 +19,10 @@ var consommationAmpoule = 60;
             //on selectionne le site correspondant
             $(this).addClass("selected");
             
+            //on deplace le chevron
+            $(".section3-websiteLi img.chevron-slector").css("visibility","hidden");
+            $(this).children("img").css("visibility","visible");
+            
             //on change les données
             //le nom du site selectionné
             $("#section3-selectedWebsite").text(d.name);
@@ -32,7 +36,7 @@ var consommationAmpoule = 60;
         };
         
         var sortedDataset = dataset.sort(function(a,b){ 
-            return a.dataConsommation - b.dataConsommation; 
+            return b.dataConsommation - a.dataConsommation; 
         });
         
         var scale = d3.scale.linear()
@@ -45,8 +49,8 @@ var consommationAmpoule = 60;
                 .append("li");
         
         websiteLis
-                .text(function(d){
-                    return d.name;
+                .html(function(d){
+                    return '<img class="chevron-slector" src="img/chevron-droit.png"/> '+d.name;
         })
                 .attr("class", "section3-websiteLi website")
                 .on("mouseover", changeWebsite);
@@ -54,6 +58,7 @@ var consommationAmpoule = 60;
         //selectionne le premier site
         changeWebsite(dataset[0]);
         $('#section3-webisteUl li:first').addClass('selected');
+        $('#section3-webisteUl li:first').children("img").css("visibility","visible");
     });
     
 })();

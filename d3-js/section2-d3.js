@@ -4,6 +4,8 @@
     var maxOpacity = 1;
     var minOpacity = 0.75;
     
+    var unselectedColor = "#285C68";
+    
     //variable de durée d'animation em ms
     var animationDuration = 1000;
     var delayDuration = 50;
@@ -13,7 +15,8 @@
         return {
             name: d.name,
             dataQuantiteDonnees: +d.dataQuantiteDonnees, //convert to number
-            dataConsommation: +d.dataConsommation //convert to number
+            dataConsommation: +d.dataConsommation, //convert to number
+            viewsPerDay: +d.viewsPerDay //convert to number
         };
     }, function(error, dataset) {
 	
@@ -29,8 +32,6 @@
                     //barChart init
                     init();
                     displayFirstWebsite();
-                    //sunbusrt init
-                    render(convertedDataSet, false);
                 });
                 
             }
@@ -64,14 +65,18 @@
                     .enter()
                     .append("li");
             
+            //nom du site
             websiteLis
-                    .text(function(d){
-                        return d.name;
-            })
-                    .attr("class", function(d, i) {
-                        return "section2-websiteLi website "+"site"+i;
-            })
+                    .html(
+                            function(d,i){
+                                return '<span class="website site'+i+'">'+d.name+'</span><span class="tooltip" title="'+dataNumberToNice(d.viewsPerDay)+' pages vues par jour"></span>';
+                            });
+                            
+            $('.tooltip').tooltipster({maxWidth:200,position:'bottom',iconDesktop:true,iconTouch:true});
             
+            //données et evts
+            websiteLis
+                    .attr("class","section2-websiteLi")
                     .attr("index", function(d, i) {
                         return i;
             })
@@ -83,18 +88,53 @@
             })
                     .on("mouseover", changeWebsite);
             
+            var websiteLisbis = d3.select("#section2bis-webisteUl").selectAll("li")
+                    .data(dataset)
+                    .enter()
+                    .append("li");
+            
+            //nom du site
+            websiteLisbis
+                    .html(
+                            function(d,i){
+                                return '<span class="website site'+i+'">'+d.name+'</span><span class="tooltip" title="'+dataNumberToNice(d.viewsPerDay)+' pages vues par jour"></span>';
+                            });
+                            
+            $('.tooltip').tooltipster({maxWidth:200,position:'bottom',iconDesktop:true,iconTouch:true});
+            
+            //données et evts
+            websiteLisbis
+                    .attr("class","section2-websiteLi")
+                    .attr("index", function(d, i) {
+                        return i;
+            })
+                    .attr("data-quantite", function(d, i) {
+                        return d.dataQuantiteDonnees;
+            })
+                    .attr("data-consommation", function(d, i) {
+                        return d.dataConsommation;
+            })
+                    .on("mouseover", changeWebsite);
+            
+            
+            
+            
             bars
                     .attr("x", function(d, i) {
                         return i * (w / dataset.length);
             })
-                    .attr("fill", function(d, i) {
-                        return chartColors[i];
+                    .attr("fill",function(d,i){
+                        if(i===0){
+                            return chartColors[0];
+                        }
+                        else{
+                            return unselectedColor;
+                        }
             })
                     .attr("index", function(d, i) {
                         return [i];
             })
                     .attr("class","bar")
-                    .attr("fill-opacity", minOpacity)
                     .attr("width", w / dataset.length - barPad)
                     .attr("height",0)		
                     .attr("y",h)
@@ -111,6 +151,8 @@
                 bars.attr("class","bar animationComplete");
             }, animationDuration+delayDuration*dataset.length);
         }
+        
+        //////////////////SUNBURST/////////////////
         
         var datasetInit = [0,0,0];
         var convertedDataSet = [];
@@ -201,22 +243,31 @@
             arcs.transition()
                     .delay(function (d,i){ return i * delayDuration;})
                     .duration(animationDuration)
-                    .attr("fill", function(d, i) {
-                        return chartColors[2-i];
-            })
+                    .attr("fill", function(d,i){
+                        if(i===2){
+                            return chartColors[0];
+                        }
+                        else{
+                            return unselectedColor;
+                        }
+                    })
                     .attrTween("d", arc2Tween);
             
             // drawing the red arcs for new data
             //  similar to above, except for 
             arcs.enter().append("svg:path")
-                    .attr("fill", function(d, i) {
-                        return chartColors[2-i];
-            })
+                    .attr("fill", function(d,i){
+                        if(i===2){
+                            return chartColors[0];
+                        }
+                        else{
+                            return unselectedColor;
+                        }
+                    })
                     .attr("index", function(d, i) {
                         return 2-i;
             })
                     .attr("class","arc")
-                    .attr("fill-opacity", minOpacity)
                     .attr("d", drawArc)
                     .each(function(d){
                         this._current = d;
@@ -233,6 +284,22 @@
         
         render(datasetInit, true);
         
+        //variable pour ne lancer la transition du chart1 que une fois
+        var arcChartHasBeenShowed = false;
+        
+        $(window).bind("scroll", function(event) {
+            
+            if(!arcChartHasBeenShowed){
+                
+                $("#section2-sunburst-chart-limit:in-viewport").each(function() {
+                    arcChartHasBeenShowed = true;
+                    render(convertedDataSet, false);
+                    displayFirstWebsite();
+                });
+                
+            }
+        });
+        
         //////////////////BOTH//////////////////
         
         // this function will be run everytime we mouse over an element
@@ -241,31 +308,33 @@
             //on remet toutes les bars a l'opacité normale
             var bars = d3.selectAll(".bar.animationComplete");
             bars.transition().duration(300)
-                    .attr("fill-opacity", minOpacity);
+                    .attr("fill", unselectedColor);
             
             //on selectionne la bar correspondante
             var bar = d3.select(".bar.animationComplete[index='"+$(this).attr("index")+"']");
             bar.transition().duration(300)
-                    .attr("fill-opacity", maxOpacity);
+                    .attr("fill", chartColors[$(this).attr("index")]);
             
-            //on remet toutes les bars a l'opacité normale
+            //on remet toutes les arcs a l'opacité normale
             var arcs = d3.selectAll(".arc.animationComplete");
             arcs.transition().duration(300)
-                    .attr("fill-opacity", minOpacity);
+                    .attr("fill", unselectedColor);
             
             //on selectionne l'arc correspondant
             var arc = d3.select(".arc.animationComplete[index='"+$(this).attr("index")+"']");
             arc.transition().duration(300)
-                    .attr("fill-opacity", maxOpacity);
+                    .attr("fill", chartColors[$(this).attr("index")]);
             
             //on remet tous les noms des sites en normal
-            $(".section2-websiteLi").removeClass("selected");
+            $(".section2-websiteLi span").removeClass("selected");
             
             //on selectionne le site correspondant
-            var websiteLi = $(".section2-websiteLi[index='"+$(this).attr("index")+"']");
-            websiteLi.addClass("selected");
+            var websiteLiName = $(".section2-websiteLi[index='"+$(this).attr("index")+"'] span");
+            websiteLiName.addClass("selected");
             
             //on change les données
+            var websiteLi = $(".section2-websiteLi[index='"+$(this).attr("index")+"']");
+            
             $("#section2-dataQuantiteDonnees").text(dataNumberToNice(websiteLi.attr("data-quantite")));
             $("#section2-dataConsommation").text(dataNumberToNice(websiteLi.attr("data-consommation")));
             $("#section2-bar-chart-usb-number").text(dataNumberToNice(websiteLi.attr("data-quantite")/1000));
@@ -275,11 +344,16 @@
         function displayFirstWebsite(){
             //on n'affiche pas l'arc et la bar en opacite max car la transition est encore en cours
             
+            //on remet tous les noms des sites en normal
+            $(".section2-websiteLi span").removeClass("selected");
+            
             //on selectionne le site correspondant
-            var websiteLi = $(".section2-websiteLi[index='0']");
-            websiteLi.addClass("selected");
+            var websiteLiName = $(".section2-websiteLi[index='0'] span");
+            websiteLiName.addClass("selected");
             
             //on change les données
+             var websiteLi = $(".section2-websiteLi[index='0']");
+            
             $("#section2-dataConsommation").text(dataNumberToNice(websiteLi.attr("data-consommation")));
             $("#section2-dataQuantiteDonnees").text(dataNumberToNice(websiteLi.attr("data-quantite")));
             $("#section2-bar-chart-usb-number").text(dataNumberToNice((websiteLi.attr("data-quantite")/1000)));
