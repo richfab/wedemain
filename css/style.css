@@ -284,7 +284,7 @@ li.image.right, li.website.right, a.website.right{
 }
 
 #horizontal{
-    width: 7600px;
+    width: 7650px;
     height: 100%;
     overflow-y: hidden;
     font-size: 0.8em;
@@ -431,6 +431,7 @@ h2, h3, h4, h5 {
 #presentation #ptdon {
     margin-top: 50px;
     font-size: 10pt;
+    font-family: helvetica;
 }
 #presentation a {
     color: white;
@@ -720,15 +721,25 @@ h2, h3, h4, h5 {
 }
 
 #conclusion #bandeau {
-	width: 100%;
-	height: 150px;
-	position: absolute;
-	bottom: 0;
-	background-color: white;
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+    background-color: white;
 }
 #conclusion #bandeau div {
-	margin-top: 20px;
+    margin-top: 20px;
 }
+
+#conclusion #donnees-wea{
+    color: black;
+}
+
+#conclusion #donnees-wea-div{
+    display: inline-block;
+    vertical-align: middle;
+}
+
 #conclusion li {
 	cursor: default;
 }
@@ -743,6 +754,8 @@ h2, h3, h4, h5 {
 }
 #conclusion .commons {
 	height: 40px;
+        display: inline-block;
+        vertical-align: middle;
 }
 #conclusion #bandeau-commons {
 	float: left;

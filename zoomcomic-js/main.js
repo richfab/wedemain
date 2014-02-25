@@ -129,7 +129,7 @@ window.requestAnimFrame = (function(){
                                 //on cache l'aide a la navigation
                                 $("#navigation-help").removeClass("opened");
                             }
-                            if(hides.length==4){
+                            if(hides.length==3){
                                 $("#intro1").removeClass("opened");
                             }
 
@@ -192,7 +192,7 @@ window.requestAnimFrame = (function(){
                             if(hides.length==5){
                                 $("#intro1").removeClass("opened");
                             }
-                            if(hides.length==3){
+                            if(hides.length==2){
                                 $("#intro1").addClass("opened");
                                 $(".point-navigation").removeClass("selected");
                                 $("#pn-intro1").addClass("selected");

@@ -185,7 +185,7 @@ function activateHorizontalScroll(section,distToScrollUp,wantToScrollUpZoomIn){
     
     //le scroll vertical modifie la position horizontale du viewport
     $("html, body").mousewheel(function(event, delta) {
-        this.scrollLeft -= (delta * 5);
+        this.scrollLeft -= (delta * 30);
         event.preventDefault();
     });
     
@@ -274,7 +274,7 @@ function reverseScrolling(wantZoomIn){
     
     $("html, body").unbind('mousewheel');
     $("html, body").mousewheel(function(event, delta) {
-        this.scrollTop -= factor*(delta * 5);
+        this.scrollTop -= factor*(delta * 30);
         event.preventDefault();
     });
 }
