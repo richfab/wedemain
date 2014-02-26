@@ -319,6 +319,7 @@ h3.section-sub-title{
     top: 100px;
     min-width: 700px;
     z-index: 2;
+    font-size: 0.9em;
 }
 
 .transition{
@@ -795,7 +796,7 @@ h2, h3, h4, h5 {
 	font-family: Oswald;
 	font-weight: 100;
 	letter-spacing: 2px;
-	font-size: 20px;
+	font-size: 16px;
 	color: black;
 	display: inline-block;
 	vertical-align: middle;
