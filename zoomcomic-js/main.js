@@ -210,20 +210,20 @@ window.requestAnimFrame = (function(){
                             if(hides.length==6){
                                 $("#conclu3").removeClass("opened");
                             }
-                            if(hides.length==4){
+                            if(hides.length==3){
                                 $("#conclu3").addClass("opened");
                                 $(".point-navigation").removeClass("selected");
                                 $("#pn-conclu3").addClass("selected");
                             }
-                            if(hides.length==4){
+                            if(hides.length==3){
                                 $("#conclu2").removeClass("opened");
                             }
-                            if(hides.length==2){
+                            if(hides.length==1){
                                 $("#conclu2").addClass("opened");
                                 $(".point-navigation").removeClass("selected");
                                 $("#pn-conclu2").addClass("selected");
                             }
-                            if(hides.length==2){
+                            if(hides.length==1){
                                 $("#conclu1").removeClass("opened");
                             }
                             if(hides.length==1){

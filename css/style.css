@@ -284,7 +284,7 @@ li.image.right, li.website.right, a.website.right{
 }
 
 #horizontal{
-    width: 7650px;
+    width: 7500px;
     height: 100%;
     overflow-y: hidden;
     font-size: 0.8em;
@@ -324,6 +324,10 @@ h3.section-sub-title{
 .transition{
     min-width: 250px;
     background-color: #16353A;
+}
+
+.transition-texte{
+    color:#FFD34E;
 }
 
 .arrow-container{
@@ -685,6 +689,10 @@ h2, h3, h4, h5 {
     cursor: auto;
 }
 
+#bouton-continuer-div{
+    margin-left: 150px;
+}
+
 /*CREDITS*/
 #conclusion .post{
     height: 100%;
@@ -696,9 +704,13 @@ h2, h3, h4, h5 {
 }
 
 #conclu-partage img{
-    height: 90px;
+    height: 50px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#wea{
+    color: #FFD34E;
 }
 
 #credits div{
@@ -716,7 +728,7 @@ h2, h3, h4, h5 {
     margin: 0 auto;
 }
 
-#conclusion div{
+#recommandez, #conclu-partage, #wea{
     margin-top: 50px;
 }
 

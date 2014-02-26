@@ -19,6 +19,12 @@
     /* border-color: ... !important; */
 }
 
+.tooltipster-hide-scroll {
+    border-radius: 5px;
+    background: transparent;
+    color: transparent;
+}
+
 
 /* If you're using the icon option, use this next selector to style them */
 .tooltipster-icon {

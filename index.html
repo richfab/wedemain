@@ -31,6 +31,13 @@
         <script src="js/jquery.tooltipster.js"></script>
         <script>
             $(document).ready(function() {
+                //debut de l'astuce pour masquer la scroll bar horizontal tout le temps
+                $('.tooltip.tooltip-hide-scroll').tooltipster({
+                    theme: 'tooltipster-hide-scroll',
+                    autoClose: false
+                });
+                $('#tooltip-hide-scroll').tooltipster('show');
+                //fin de l'astuce pour masquer la scroll bar horizontal tout le temps
                 $('.tooltip.tooltip-percentage').tooltipster({maxWidth:200,position:'bottom',iconDesktop:true,iconTouch:true});
                 $('.tooltip.tooltip-top').tooltipster({maxWidth:200,position:'top'});
                 $('.tooltip').tooltipster({maxWidth:200,position:'bottom',iconDesktop:true,iconTouch:true});
@@ -49,6 +56,7 @@
         
     </head>
     <body>
+        
         <div id="titre" class="intro-outro">
             <div class="strut"></div>
             <div id="titre-post" class="post">
@@ -73,13 +81,17 @@
                         <img id="fb" class="image" src="img/facebook.png" />						
                     </a>
                 </div>
+                <div id="wea">
+                    <p><span style="font-size: 1.5em;">MESUREZ LA CONSOMMATION</span><br/><span>DE VOS SITES PRÉFÉRÉS SUR</span></p>
+                    <p><a href="http://www.webenergyarchive.com" target="_blank" style="color:#FFD34E;font-size: 2em;cursor: pointer;">WEA</a></p>
+                </div>
                 <div id="credits">
                     <div id="credits-partenaires">
                         <h4 class="credit-title">PARTENAIRES</h4>
                         <ul>
-                            <li><a href="http://www.wedemain.fr">We Demain</a></li>
-                            <li><a href="http://www.greencodelab.fr">Green Code Lab</a></li>
-                            <li><a href="http://www.open-odyssey.org">Open Odyssey</a></li>
+                            <li><a href="http://www.wedemain.fr" target="_blank">We Demain</a></li>
+                            <li><a href="http://www.greencodelab.fr" target="_blank">Green Code Lab</a></li>
+                            <li><a href="http://www.open-odyssey.org" target="_blank">Open Odyssey</a></li>
                         </ul>
                     </div>
                     <div id="credits-journalisme">
@@ -101,7 +113,7 @@
                     <div id="credits-developpement">
                         <h4 class="credit-title">DÉVELOPPEMENT</h4>
                         <ul>
-                            <li><a href="http://fabienrichard.fr">Fabien Richard</a></li>
+                            <li><a href="http://fabienrichard.fr" target="_blank">Fabien Richard</a></li>
                             <li>Valentin Lhommeau</li>
                             <li>Kostandin Tahiri</li>
                         </ul>
@@ -110,52 +122,50 @@
             </div>
             <div id="bandeau">
                 <div id="bandeau-partenaires">
-                    <a href="http://www.wedemain.fr">
+                    <a href="http://www.wedemain.fr" target="_blank">
                         <img id="wedemain" class="partenaires" src="img/bandeau/WeDemain.jpg" alt="We Demain" />	            	
                     </a>            	
-                    <a href="http://www.ouestmedialab.fr">
+                    <a href="http://www.ouestmedialab.fr" target="_blank">
                         <img id="ouestmedialab" class="partenaires" src="img/bandeau/OuestMedialab.jpg" alt="Ouest Médialab" />	            	
                     </a>            	
-                    <a href="http://www.agrnantes.fr">
+                    <a href="http://www.agrnantes.fr" target="_blank">
                         <img id="agr" class="partenaires" src="img/bandeau/AGR.jpg" alt="AGR, L'école de l'image" />	            	
                     </a>            	
-                    <a href="http://www.polytech-nantes.fr">
+                    <a href="http://www.polytech-nantes.fr" target="_blank">
                         <img id="polytech" class="partenaires" src="img/bandeau/Polytech.jpg" alt="Polytech Nantes">	            	
                     </a>            	
-                    <a href="http://www.sciencescom.org">
+                    <a href="http://www.sciencescom.org" target="_blank">
                         <img id="sciencescom" class="partenaires" src="img/bandeau/SciencesCom.jpg" alt="SciencesCom">	            	
                     </a>            	
-                    <a href="http://www.orange.fr">
+                    <a href="http://www.orange.fr" target="_blank">
                         <img id="orange" class="partenaires" src="img/bandeau/Orange.jpg" alt="Orange">	            	
                     </a>
-                    <a href="http://paysdelaloire.fr">
+                    <a href="http://paysdelaloire.fr" target="_blank">
                         <img id="paysdelaloire" class="partenaires" src="img/bandeau/PaysdelaLoire.jpg" alt="Région Pays de la Loire">	            	
                     </a>
-                    <a href="http://www.univ-nantes.fr">
+                    <a href="http://www.univ-nantes.fr" target="_blank">
                         <img id="univnantes" class="partenaires" src="img/bandeau/UnivNantes.jpg" alt="Université de Nantes">	            	
                     </a>
                 </div>
                 
                 <div id="bandeau-commons">
-                    <a href="http://creativecommons.org">
+                    <a href="http://creativecommons.org" target="_blank">
                         <img id="creativecommons" class="commons" src="img/bandeau/CreativeCommons.jpg" alt="Creative Commons">	            	
                     </a>
-                    <a href="http://opensource.org">
+                    <a href="http://opensource.org" target="_blank">
                         <img id="opensource" class="commons" src="img/bandeau/OpenSource.jpg" alt="Open source initiative">	            	
                     </a>
-                    <a href="http://www.etalab.gouv.fr">
+                    <a href="http://www.etalab.gouv.fr" target="_blank">
                         <img id="etalab" class="commons" src="img/bandeau/Etalab.jpg" alt="Etalab gouv">	            	
                     </a>
-                    <div id="donnees-wea-div" style="margin-top: 0px;">
-                        <a id="donnees-wea" href="http://www.webenergyarchive.com">
-                            Données collectées par<br/> Green Code Lab sur <span style="text-decoration: underline;">WEA</span>
-                        </a>
-                    </div>
+                    <a href="http://www.webenergyarchive.com" target="_blank">
+                        <img id="wea-logo" class="commons" src="img/bandeau/WEA.jpg" alt="WEA">	            	
+                    </a>
                 </div>
                 
                 <div id="bandeau-hyblab">
                     <h3 id="projet">un projet issu des ateliers du</h3>
-                    <a href="http://hyblab.fr">
+                    <a href="http://hyblab.fr" target="_blank">
                         <img id="hyblab" src="img/bandeau/HybLab.jpg" alt="HybLab">	            	
                     </a>
                 </div>
@@ -268,7 +278,8 @@
                         <div id="dm" class="ptlogos"><img id="marmiton" src="img/marmiton.png" /><h4 class="ptnoms">MARMITON</h4></div>
                         <div id="lbc" class="ptlogos"><img src="img/leboncoin.png" /><h4 class="ptnoms">LEBONCOIN</h4></div>
                     </div>
-                    <h5 id="ptdon">Données récoltées par Green Code Lab sur <a style="text-decoration: underline;" href="http://www.webenergyarchive.com/"> Web Energy Archive</a></h5>
+                    <h5 id="ptdon">Données récoltées par Green Code Lab sur <a style="text-decoration: underline;" href="http://www.webenergyarchive.com/" target="_blank"> Web Energy Archive</a></h5>
+                    <div id="tooltip-hide-scroll" class="tooltip tooltip-hide-scroll" title=""></div>
                 </div>
             </div>
             
@@ -371,7 +382,8 @@
             <div id="transition3" class="transition">
                 <div class="strut"></div>
                 <div class="post">
-                    <h2>L'ODYSSÉE DE L'OCTET</h2>
+                    <h2 class="transition-texte"><span style="font-size: 2.2em;">L'ODYSSÉE</span><br/>
+                        <span style="font-size: 1.7em;">DE L'OCTET</span></h2>
                 </div>
             </div>
                 
@@ -429,7 +441,9 @@
             <div id="transition2" class="transition">
                 <div class="strut"></div>
                 <div class="post">
-                    <h2>LE VOLUME<br/>N'EST PAS<br/>LE SEUL</br>RESPONSABLE</h2>
+                    <h2 class="transition-texte"><span style="font-size: 1.7em;">LE VOLUME</span><br/>
+                        <span style="font-size: 1.2em;">N'EST PAS LE SEUL</span></br>
+                        <span style="font-size: 1.7em;">RESPONSABLE</span></h2>
                 </div>
             </div>
                 
@@ -581,15 +595,18 @@
                         <div id="section5-data-right-lower">
                             <span style="font-size: 1.5em;">ALLUMÉES PENDANT 1H</span>
                         </div>
+                        
                     </div>
+                </div>
+                <div class="post" id="bouton-continuer-div">
+                    <a class="revenir-continuer" onclick="activateTravelling(false);">CONTINUER <img src="img/chevron-droit.png" /></a>
                 </div>
                 
             </div>
             
-            <div id="post-last-section" class="transition horizontal-limit">
+            <div id="post-last-section" class="section horizontal-limit">
                 <div class="strut"></div>
                 <div class="post">
-                    <a class="revenir-continuer" onclick="activateTravelling(false);">CONTINUER <img src="img/chevron-droit.png" /></a>
                 </div>
             </div>
             
@@ -597,11 +614,11 @@
         
         <footer>
             <div  id="bleft" class="bloc">
-                <a id="wd" class="liens" href="http://www.wedemain.fr">WE DEMAIN</a>
+                <a id="wd" class="liens" href="http://www.wedemain.fr" target="_blank">WE DEMAIN</a>
                 <div class="barre"></div>
-                <a id="gcl" class="liens" href="http://www.greencodelab.fr">GREEN CODE LAB</a>
+                <a id="gcl" class="liens" href="http://www.greencodelab.fr" target="_blank">GREEN CODE LAB</a>
                 <div class="barre"></div>
-                <a id="oo" class="liens" href="http://www.open-odyssey.org">OPEN ODYSSEY</a>
+                <a id="oo" class="liens" href="http://www.open-odyssey.org" target="_blank">OPEN ODYSSEY</a>
             </div>
             
             <div id="bright" class="bloc">
