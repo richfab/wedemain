@@ -158,6 +158,8 @@ function activateHorizontalScroll(section,distToScrollUp,wantToScrollUpZoomIn){
     
     //on s'assure d'avoir fermer les aides à la navigation
     $("#navigation-help, #navigation-help-out").removeClass("opened");
+    //on reaffiche le tooltip qui supprime la scroll bar horizontale
+    $('#tooltip-hide-scroll').tooltipster('show');
     
     $(".intro-outro").hide();
     $(".infobulle").removeClass("opened");

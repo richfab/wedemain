@@ -690,13 +690,10 @@ h2, h3, h4, h5 {
 }
 
 #bouton-continuer-div{
-    margin-left: 150px;
+    margin-left: 100px;
 }
 
 /*CREDITS*/
-#conclusion .post{
-    height: 100%;
-}
 
 .credit-title{
     color:#CAC09C;
@@ -726,10 +723,22 @@ h2, h3, h4, h5 {
     left: 0;
     right: 0;
     margin: 0 auto;
+    font-size: 0.9em;
 }
 
-#recommandez, #conclu-partage, #wea{
-    margin-top: 50px;
+#recommandez,#conclu-partage{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#recommandez{
+    top: 80px;
+}
+
+#conclu-partage{
+    top:170px;
 }
 
 #conclusion #bandeau {
