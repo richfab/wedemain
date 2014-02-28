@@ -31,7 +31,7 @@
         <script src="js/jquery.tooltipster.js"></script>
         <script>
             $(document).ready(function() {
-                //debut de l'astuce pour masquer la scroll bar horizontal tout le temps
+                //debut de l'astuce pour masquer la scroll bar horizontale tout le temps
                 $('.tooltip.tooltip-hide-scroll').tooltipster({
                     theme: 'tooltipster-hide-scroll',
                     autoClose: false
@@ -47,12 +47,6 @@
         <!--Pour le style-->    
         <link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
         <link href="css/style.css" media="all" rel="stylesheet" type="text/css" />
-        
-        <!--[if lt IE 9]>
-        <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]--> 
-        
         
     </head>
     <body>
@@ -184,7 +178,7 @@
                 <div id="container" style="margin-top: 10%;">
                     <div id="title">
                         <p id="old-browser">
-                            3D transforms are supported in newer browsers.
+                            Expérimentez pleinement ce voyage avec un navigateur plus récent
                         </p>
                         <div id="environment">
                             <div id="content">
@@ -195,22 +189,22 @@
                                     <p><img src="img/last.png" alt="" /></p>
                                 </section>
                                 <section onclick="scrollZoomInOrOut($('#pn-intro1'),$('#pn-conclu'));">
-                                    <p><img src="img/nuages1.png" alt="" /></p>
+                                    <p><img src="img/nuages1.png" alt="nuage" /></p>
                                 </section>
                                 <section onclick="scrollZoomInOrOut($('#pn-intro2'),$('#pn-conclu'));">
-                                    <p><img src="img/nuages2.png" alt="" /></p>
+                                    <p><img src="img/nuages2.png" alt="nuage" /></p>
                                 </section>
                                 <section onclick="scrollZoomInOrOut($('#pn-intro2'),$('#pn-conclu3'));">
-                                    <p><img src="img/nuages3.png" alt="" /></p>
+                                    <p><img src="img/nuages3.png" alt="nuage" /></p>
                                 </section>
                                 <section onclick="scrollZoomInOrOut($('#pn-intro2'),$('#pn-conclu3'));">
-                                    <p><img src="img/quartier.png" alt=""/></p>
+                                    <p><img src="img/quartier.png" alt="quartier"/></p>
                                 </section>
                                 <section onclick="scrollZoomInOrOut($('#pn-presentation'),$('#pn-conclu2'));">
-                                    <p><img  src="img/fenetre.png" alt=""/></p>
+                                    <p><img  src="img/fenetre.png" alt="fenetre"/></p>
                                 </section>
                                 <section onclick="scrollZoomInOrOut($('#pn-presentation'),$('#pn-conclu2'));">
-                                    <p><img src="img/mecdedos.png" alt="" /></p>
+                                    <p><img src="img/mecdedos.png" alt="homme sur oridnateur" /></p>
                                 </section>
                                 <section onclick="scrollZoomInOrOut($('#pn-presentation'),$('#pn-conclu1'));">
                                     <p>
@@ -325,7 +319,7 @@
                 
             </div>
             
-            <div id="transition4" class="transition">
+            <div id="transition2" class="transition">
                 <div class="strut"></div>
                 <div class="post">
                     <img style="height: 400px;" src="img/tourdumonde.png"/>
@@ -340,7 +334,7 @@
                 </div>
             </div>
             
-            <div id="section4" class="section" >
+            <div id="section2" class="section" >
                 
                 <div class="strut"></div>
                 <div class="post">
@@ -351,32 +345,32 @@
                         
                     <h3 class="section-sub-title">Les informations des sites que vous consultez sont stockées aux 4 coins du monde.</h3>
                         
-                    <div class="limit" id="section4-map-limit" style="height:30px;"></div>
+                    <div class="limit" id="section2-map-limit" style="height:30px;"></div>
                     <!--Les dimensions du conteneur doivent être en pixels pour que la carte d'affiche correctement-->
-                    <div id="section4-map" style="position:relative;display: inline-block; width: 800px; height:500px"></div>
-                    <div id="section4-websiteList">
-                        <ul id="section4-websiteUl">
-                            <li id="section4-websiteLi1" data-url="data/section4-lemonde.csv" data-index="0" distance="1221235"><span class="website site0 tooltip selected" title="Pour vous permette de partager des articles, LEMONDE contacte les serveurs de Facebook">LEMONDE</span></li>
-                            <li id="section4-websiteLi2" data-url="data/section4-marmiton.csv" data-index="1" distance="299161"><span class="website site1 tooltip" title="MARMITON se connecte aux serveurs de Youtube pour vous proposer des recettes en vidéos">MARMITON</span></li>
-                            <li id="section4-websiteLi3" data-url="data/section4-leboncoin.csv" data-index="2" distance="24691"><span class="website site2 tooltip" title="Tous les serveurs de LEBONCOIN sont en France">LEBONCOIN</span></li>
+                    <div id="section2-map" style="position:relative;display: inline-block; width: 800px; height:500px"></div>
+                    <div id="section2-websiteList">
+                        <ul id="section2-websiteUl">
+                            <li id="section2-websiteLi1" data-url="data/section2-lemonde.csv" data-index="0" distance="1221235"><span class="website site0 tooltip selected" title="Pour vous permette de partager des articles, LEMONDE contacte les serveurs de Facebook">LEMONDE</span></li>
+                            <li id="section2-websiteLi2" data-url="data/section2-marmiton.csv" data-index="1" distance="299161"><span class="website site1 tooltip" title="MARMITON se connecte aux serveurs de Youtube pour vous proposer des recettes en vidéos">MARMITON</span></li>
+                            <li id="section2-websiteLi3" data-url="data/section2-leboncoin.csv" data-index="2" distance="24691"><span class="website site2 tooltip" title="Tous les serveurs de LEBONCOIN sont en France">LEBONCOIN</span></li>
                         </ul>
                     </div>
                     
-                    <div id="section4-data-distance">
-                        <div id="section4-data-distance-texte1">
+                    <div id="section2-data-distance">
+                        <div id="section2-data-distance-texte1">
                             <h5>
                                 <span style="font-size: 1.3em;vertical-align: top">L'INFORMATION DOIT PARCOURIR </span>
-                                <span style="font-size: 2.7em;color:#F2D24C;line-height: 40px;" id="section4-distance"></span>
+                                <span style="font-size: 2.7em;color:#F2D24C;line-height: 40px;" id="section2-distance"></span>
                                 <span style="color:#F2D24C;font-size: 1.3em;">KM</span><span style="font-size: 1.3em;"> AVANT ARRIVER À VOTRE ORDINATEUR</span>
                             </h5>
                         </div>
                     </div>
                         
-                    <div id="section4-data-terre-lune">
-                        <div id="section4-data-terre-lune-texte1">
+                    <div id="section2-data-terre-lune">
+                        <div id="section2-data-terre-lune-texte1">
                             <h5>
                                 <span style="font-size: 1.3em;">SOIT</span>
-                                <span style="font-size: 3.5em;color:#A93721;line-height: 40px;" id="section4-terre-lune"></span>
+                                <span style="font-size: 3.5em;color:#A93721;line-height: 40px;" id="section2-terre-lune"></span>
                                 <span style="font-size: 1.3em"> <span style="color:#A93721;">FOIS</span> LE TOUR DE LA TERRE</span>
                             </h5>
                         </div>
@@ -400,7 +394,7 @@
                 </div>
             </div>
                 
-            <div id="section2" class="section" >
+            <div id="section3" class="section" >
                 
                 <div class="strut"></div>
                 <div class="post">
@@ -410,32 +404,32 @@
                         
                     <h3 class="section-sub-title">Plus un site est volumineux, plus sa consultation est énergivore.</h3>
                     
-                    <div id="section2-charts">
+                    <div id="section3-charts">
                         
-                        <div class="section2-data-container">
+                        <div class="section3-data-container">
                             
-                            <div id="section2-bar-chart-container"><div class="chart" id="section2-bar-chart" style="min-height:150px;"></div></div>
-                            <div class="limit" id="section2-bar-chart-limit" style="height:30px;"></div>
+                            <div id="section3-bar-chart-container"><div class="chart" id="section3-bar-chart" style="min-height:150px;"></div></div>
+                            <div class="limit" id="section3-bar-chart-limit" style="height:30px;"></div>
                         </div>
                         
                     </div>
                     
-                    <div id="section2-data">
+                    <div id="section3-data">
                         
-                        <div class="section2-data-container">
-                            <span style="font-size: 3em;color: #CAC09C;" id="section2-dataQuantiteDonnees"></span>
-                            <span style="font-size: 2em;color: #CAC09C;" id="section2-bar-chart-unit" class="section2-data">Mo</span>
-                            <span style="font-size: 2em;" id="section2-bar-chart-usb-text">SOIT</span>
-                            <span style="font-size: 5em;color: #F2D24C;" id="section2-bar-chart-usb-number"></span>
-                            <span id="section2-bar-chart-usb-unit"><img style="height: 55px;"  class="tooltip tooltip-top" title="Clé USB de 1Go" src="img/cleusb.png"/></span>
+                        <div class="section3-data-container">
+                            <span style="font-size: 3em;color: #CAC09C;" id="section3-dataQuantiteDonnees"></span>
+                            <span style="font-size: 2em;color: #CAC09C;" id="section3-bar-chart-unit" class="section3-data">Mo</span>
+                            <span style="font-size: 2em;" id="section3-bar-chart-usb-text">SOIT</span>
+                            <span style="font-size: 5em;color: #F2D24C;" id="section3-bar-chart-usb-number"></span>
+                            <span id="section3-bar-chart-usb-unit"><img style="height: 55px;"  class="tooltip tooltip-top" title="Clé USB de 1Go" src="img/cleusb.png"/></span>
                             <h2>Pour 10 000 pages affichées</h2>
                         </div>
                         
                     </div>
                         
-                    <div id="section2-websiteList">
+                    <div id="section3-websiteList">
                         
-                        <ul id="section2-webisteUl">
+                        <ul id="section3-webisteUl">
                             
                         </ul>
                         
@@ -444,7 +438,7 @@
                 </div>
             </div>
                 
-            <div id="transition2" class="transition">
+            <div id="transition3bis" class="transition">
                 <div class="strut"></div>
                 <div class="post">
                     <h2 class="transition-texte"><span style="font-size: 1.4em;">LE VOLUME</span><br/>
@@ -460,7 +454,7 @@
                 </div>
             </div>
             
-            <div id="section2" class="section" >
+            <div id="section3bis" class="section" >
                 
                 <div class="strut"></div>
                 <div class="post">
@@ -470,27 +464,27 @@
                         
                     <h3 class="section-sub-title">Un site bien pensé peut réduire la facture d'électricité.</h3>
                     
-                    <div id="section2-charts">
+                    <div id="section3bis-charts">
                         
-                        <div class="section2-data-container">
+                        <div class="section3-data-container">
                             
-                            <div class="chart" id="section2-sunburst-chart" style="min-height:150px;min-width: 150px;"></div>
-                            <div class="limit" id="section2-sunburst-chart-limit" style="height:30px;"></div>
+                            <div class="chart" id="section3-sunburst-chart" style="min-height:150px;min-width: 150px;"></div>
+                            <div class="limit" id="section3-sunburst-chart-limit" style="height:30px;"></div>
                         </div>
                         
                     </div>
                     
-                        <div id="section2-data">
+                        <div id="section3bis-data">
                         
-                        <div class="section2-data-container" id="section2-data-container-lower">
-                            <div style="font-size: 3em;color: #F2D24C;" id="section2-dataConsommation"></div>
-                            <div style="font-size: 2em;color: #F2D24C;" id="section2-bar-chart-unit" class="section2-data">Wh</div>
-                            <span style="font-size: 2em;" id="section2-bar-chart-ampoule-text">SOIT</span>
-                            <span style="font-size: 5em;color: #A93721;" id="section2-bar-chart-ampoule-number"></span>
-                            <span id="section2-bar-chart-ampoule-unit"><img style="height: 55px;"  class="tooltip tooltip-top" title="Ampoule de 60W" src="img/ampoule.png"/></span>
+                        <div class="section3-data-container" id="section3bis-data-container-lower">
+                            <div style="font-size: 3em;color: #F2D24C;" id="section3-dataConsommation"></div>
+                            <div style="font-size: 2em;color: #F2D24C;" id="section3-bar-chart-unit" class="section3-data">Wh</div>
+                            <span style="font-size: 2em;" id="section3-bar-chart-ampoule-text">SOIT</span>
+                            <span style="font-size: 5em;color: #A93721;" id="section3-bar-chart-ampoule-number"></span>
+                            <span id="section3-bar-chart-ampoule-unit"><img style="height: 55px;"  class="tooltip tooltip-top" title="Ampoule de 60W" src="img/ampoule.png"/></span>
                         </div>
                             
-                        <div id="section2-dataAmpoules-lower">
+                        <div id="section3-dataAmpoules-lower">
                             <span style="font-size: 1.5em;">ALLUMÉES PENDANT </span><span style="font-size: 2.5em;">1H</span>
                         </div>
                             
@@ -500,9 +494,9 @@
                         
                     </div>
                         
-                    <div id="section2-websiteList">
+                    <div id="section3bis-websiteList">
                         
-                        <ul id="section2bis-webisteUl">
+                        <ul id="section3bis-webisteUl">
                             
                         </ul>
                         
@@ -512,30 +506,28 @@
                 </div>
             </div>
             
-            <div id="section3" class="section" >
+            <div id="section4" class="section" >
                 
                 <div class="strut"></div>
                     <div class="post">
-                        
-                    <!--<h3 class="section-sub-title">D'autres sites consommateurs d'énergie</h3>-->
                     
-                    <div id="section3-websiteList">
+                    <div id="section4-websiteList">
                         
-                        <ul id="section3-webisteUl" class="websiteUlNoTooltip">
+                        <ul id="section4-webisteUl" class="websiteUlNoTooltip">
                         </ul>
                         
                     </div>
                     
-                    <div id="section3-chartConsommation">
+                    <div id="section4-chartConsommation">
                         
-                        <div style="font-size: 2.5em" id="section3-selectedWebsite"></div>
-                        <div id="section3-dataConsommation">
-                            <div style="font-size: 2.5em;color: #F2D24C;" id="section3-valeurConsommation"></div><div style="font-size: 2em;color: #F2D24C;"> Wh</div>
+                        <div style="font-size: 2.5em" id="section4-selectedWebsite"></div>
+                        <div id="section4-dataConsommation">
+                            <div style="font-size: 2.5em;color: #F2D24C;" id="section4-valeurConsommation"></div><div style="font-size: 2em;color: #F2D24C;"> Wh</div>
                         </div>
-                        <div id="section3-dataAmpoules" style="margin-top: -30px;">
-                            <div style="font-size: 2.5em" ><a>SOIT </a></div><div style="font-size: 5em;color: #A93721;" id="section3-nombreAmpoules"></div><div id="ampouleImg"><img style="height: 70px;" class="tooltip tooltip-top" title="Ampoule de 60W" src="img/ampoule.png"/></div>
+                        <div id="section4-dataAmpoules" style="margin-top: -30px;">
+                            <div style="font-size: 2.5em" ><a>SOIT </a></div><div style="font-size: 5em;color: #A93721;" id="section4-nombreAmpoules"></div><div id="ampouleImg"><img style="height: 70px;" class="tooltip tooltip-top" title="Ampoule de 60W" src="img/ampoule.png"/></div>
                         </div>
-                        <div id="section3-dataAmpoules-lower" style="margin-top: -80px;">
+                        <div id="section4-dataAmpoules-lower" style="margin-top: -80px;">
                             <span style="font-size: 1.3em;vertical-align: super;">ALLUMÉES PENDANT </span><span style="font-size: 3em;margin-left: 10px;">1H</span>
                         </div>
                         <h4 style="margin-top: 40px;">Pour 10 000 pages affichées</h4>
@@ -643,10 +635,10 @@
                 <div onclick="scrollToTextIntro(1110);" id="pn-intro2" class="point-navigation"></div>
                 <div onclick="scrollToSection($('#presentation'));" id="pn-presentation" class="point-navigation tooltip tooltip-top" title="Présentation"></div>
                 <div onclick="scrollToSection($('#section1'));" id="pn-section1" class="point-navigation tooltip tooltip-top" title="Répartition de la consommation énergétique d'une page Web"></div>
-                <div onclick="scrollToSection($('#transition4'));" id="pn-transition4" class="point-navigation tooltip tooltip-top" title="Le tour du monde en 80 clics"></div>
+                <div onclick="scrollToSection($('#transition2'));" id="pn-transition2" class="point-navigation tooltip tooltip-top" title="Le tour du monde en 80 clics"></div>
                 <div onclick="scrollToSection($('#transition3'));" id="pn-transition3" class="point-navigation tooltip tooltip-top" title="L'odyssée de l'Octet"></div>
-                <div onclick="scrollToSection($('#transition2'));" id="pn-transition2" class="point-navigation tooltip tooltip-top" title="Into the Watt"></div>
-                <div onclick="scrollToSection($('#section3'));" id="pn-section3" class="point-navigation tooltip tooltip-top" title="D'autres sites consommateurs"></div>
+                <div onclick="scrollToSection($('#transition3bis'));" id="pn-transition3bis" class="point-navigation tooltip tooltip-top" title="Into the Watt"></div>
+                <div onclick="scrollToSection($('#section4'));" id="pn-section4" class="point-navigation tooltip tooltip-top" title="D'autres sites consommateurs"></div>
                 <div onclick="scrollToSection($('#transition5'));" id="pn-transition5" class="point-navigation tooltip tooltip-top" title="Consommation à grande échelle"></div>
                 <div onclick="scrollToTextOutro(1070);" id="pn-conclu1" class="point-navigation"></div>
                 <div onclick="scrollToTextOutro(600);" id="pn-conclu2" class="point-navigation"></div>

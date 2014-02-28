@@ -1,11 +1,4 @@
-name,dataConsommation
-Wikipédia,217
-Google,228
-Youtube,343
-Pages Jaunes,398
-Google news,399
-Le Télégramme,612
-Allocine,675
-Ouest France,929
-Programme TV,1246
-Le Figaro,1326
+name,dataQuantiteDonnees,dataConsommation,viewsPerDay
+LEMONDE,6946,1172,8665312
+MARMITON,28698,684,7833333
+LEBONCOIN,839,136,212640633

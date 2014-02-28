@@ -1,149 +1,64 @@
+var consommationAmpoule = 60;
+
 (function() {
     
-    var circonferenceTerre = 40075;
-    
-    //variable pour ne lancer l'animation de la carte que une fois la limite visible
-    var mapHasBeenShowed = false;
-    
-    $(window).bind("scroll", function(event) {
+    //recupere les donnees
+    d3.csv("data/section4.csv", function(d) {
+        return {
+            name: d.name,
+            dataConsommation: +d.dataConsommation //convert to number
+        };
+    }, function(error, dataset) {
         
-        if(!mapHasBeenShowed){
+        // this function will be run everytime we mouse over an element
+        var changeWebsite = function(d) {
             
-            $("#section4-map-limit:in-viewport").each(function() {
-                mapHasBeenShowed = true;
-                mapInit();
-                $("#section4-websiteLi1").mouseover();
-            });
+            //on remet tous les noms des sites en normal
+            $(".section4-websiteLi").removeClass("selected");
             
-        }
-    });
-    
-    var nantes = {lat: 47.2309954, lon: -1.5626992};
-    
-    //variable de durée d'animation em ms
-    var animationDuration = 2000;
-    
-    function mapInit(){
-        
-        var mapHeight = $(window).height()/2.25;
-        
-        $("#section4-map").height(mapHeight);
-        $("#section4-map").width(mapHeight*2);
-        
-        var map = new Datamap({
+            //on selectionne le site correspondant
+            $(this).addClass("selected");
             
-            element: document.getElementById('section4-map'),
+            //on deplace le chevron
+            $(".section4-websiteLi img.chevron-slector").css("visibility","hidden");
+            $(this).children("img").css("visibility","visible");
             
-            fills: {
-                defaultFill: '#285C68', //any hex, color name or rgb/rgba value
-                cityFill: 'white'
-            },
-            geographyConfig: {
-                borderWidth: 1,
-                borderColor: '#285C68',
-                popupOnHover: false, //disable the popup while hovering
-                highlightOnHover: false
-            }
+            //on change les données
+            //le nom du site selectionné
+            $("#section4-selectedWebsite").text(d.name);
+            //sa consammation
+            $("#section4-valeurConsommation").text(d.dataConsommation);
+            //les ampoules que cela représente
+            var nombreAmpoules = dataNumberToNice(d.dataConsommation/consommationAmpoule);
+            $("#section4-nombreAmpoules").text(nombreAmpoules);
             
-        });
-        
-        var changeWebsiteMap = function(dataUrl, index){
             
-            //recupere les donnees
-            d3.csv(dataUrl, function(d) {
-                return {
-                    value: +d.value,
-                    iso3: d.iso3,
-                    latitude: d.lat,
-                    longitude: d.lon,
-                    name: d.name,
-                    radius: 5,
-                    yeild: 400
-                };
-            }, function(error, cities) {
-                
-                //draw bubbles for bombs
-                map.bubbles(cities, {
-                    borderWidth: 2,
-                    fillKey: 'cityFill',
-                    borderColor: chartColors[index],
-                    popupOnHover: true,
-                    popupTemplate: function (geo, data) { 
-                        return ['<div class="hoverinfo"><strong>' +  data.name +'</strong>',
-                            '<br/>' +  data.value + ' mWh',
-                            '</div>'].join('');
-                    },
-                    fillOpacity: 0.75,
-                    highlightOnHover: true,
-                    highlightFillColor: "grey",
-                    highlightBorderColor: chartColors[index],
-                    highlightBorderWidth: 2,
-                    highlightFillOpacity: 0.85
-                });
-                
-                var arcs = [];
-                for(var i in cities){
-                    arcs[i] = {
-                        origin: {
-                            latitude: nantes.lat,
-                            longitude: nantes.lon
-                        },
-                        destination: {
-                            latitude: cities[i].latitude,
-                            longitude: cities[i].longitude
-                        }
-                    };
-                }
-                
-                var arcsBack = [];
-                for(var i in cities){
-                    arcsBack[i] = {
-                        destination: {
-                            latitude: nantes.lat,
-                            longitude: nantes.lon
-                        },
-                        origin: {
-                            latitude: cities[i].latitude,
-                            longitude: cities[i].longitude
-                        }
-                    };
-                }
-                
-                arcOptions = {
-                    strokeWidth: 2, 
-                    strokeColor: chartColors[index], 
-                    arcSharpness: 0.6, 
-                    animationSpeed: animationDuration
-                };
-                
-                map.arc(arcs, arcOptions);
-                
-                setTimeout(function(){
-                    
-                    map.arc([]);
-                    map.arc(arcsBack, arcOptions);
-                    
-                }, animationDuration);
-                
-            });
         };
         
-        //ajout de l'événement du clic sur un site web
-        $("#section4-websiteUl li").each(function(){
-            $(this).mouseover(
-                    function() {
-                        changeWebsiteMap($(this).attr('data-url'),$(this).attr('data-index'));
-                
-                //le nom du site est mis en valeur
-                $("#section4-websiteUl span").removeClass('selected');
-                $(this).children("span").addClass('selected');
-                
-                //les donnees sont mises a jour
-                $("#section4-distance").text(dataNumberToNice($(this).attr('distance')));
-                $("#section4-terre-lune").text(dataNumberToNice($(this).attr('distance')/circonferenceTerre));
-            });
+        var sortedDataset = dataset.sort(function(a,b){ 
+            return b.dataConsommation - a.dataConsommation; 
         });
         
-    }
+        var scale = d3.scale.linear()
+                .domain([0, d3.max(dataset, function(d) { return d.dataConsommation; })]) //definition du domaine (input) 
+                .range([chartColors[2],chartColors[0]]); //definition de l'affichage (output)
+        
+        var websiteLis = d3.select("#section4-webisteUl").selectAll("li")
+                .data(sortedDataset)
+                .enter()
+                .append("li");
+        
+        websiteLis
+                .html(function(d){
+                    return '<img class="chevron-slector" src="img/chevron-droit.png"/> '+d.name;
+        })
+                .attr("class", "section4-websiteLi website")
+                .on("mouseover", changeWebsite);
+        
+        //selectionne le premier site
+        changeWebsite(dataset[0]);
+        $('#section4-webisteUl li:first').addClass('selected');
+        $('#section4-webisteUl li:first').children("img").css("visibility","visible");
+    });
     
 })();

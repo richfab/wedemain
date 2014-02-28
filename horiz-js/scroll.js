@@ -124,13 +124,6 @@ function scrollZoomInOrOut(pnToClickIn, pnToClickOut){
     }
 }
 
-//si l'élément responsable du clic n'est ni un a, ni un li, ni un span on clique le bouton passé en parametre
-//function clickToGoToNextSection(event, pnToClick){
-//    if((event.target.nodeName!='A')&&(event.target.nodeName!='LI')&&(event.target.nodeName!='SPAN')&&(event.target.nodeName!='IMG')){
-//        pnToClick.click();
-//    }
-//}
-
 //fonction qui permet d'afficher les boutons continuer et retour
 function displayButtonToHoriz(){
     if(!isHoriz){
@@ -202,21 +195,21 @@ function activateHorizontalScroll(section,distToScrollUp,wantToScrollUpZoomIn){
             $(".point-navigation").removeClass("selected");
             $("#pn-transition5").addClass("selected");
         });
-        $("#section3:in-viewport").each(function() {
+        $("#section4:in-viewport").each(function() {
             $(".point-navigation").removeClass("selected");
-            $("#pn-section3").addClass("selected");
+            $("#pn-section4").addClass("selected");
         });
-         $("#transition2:in-viewport").each(function() {
+         $("#transition3bis:in-viewport").each(function() {
             $(".point-navigation").removeClass("selected");
-            $("#pn-transition2").addClass("selected");
+            $("#pn-transition3bis").addClass("selected");
         });
         $("#transition3:in-viewport").each(function() {
             $(".point-navigation").removeClass("selected");
             $("#pn-transition3").addClass("selected");
         });
-        $("#transition4:in-viewport").each(function() {
+        $("#transition2:in-viewport").each(function() {
             $(".point-navigation").removeClass("selected");
-            $("#pn-transition4").addClass("selected");
+            $("#pn-transition2").addClass("selected");
         });
         $("#section1:in-viewport").each(function() {
             $(".point-navigation").removeClass("selected");

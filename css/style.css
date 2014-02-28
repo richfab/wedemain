@@ -443,7 +443,7 @@ h2, h3, h4, h5 {
     text-decoration: none;
 }
 
-/*SECTION 1*/
+/*SECTION 1 DONUT*/
 #section1 h2.section-title, #section1 h3.section-sub-title{
     min-width: 500px;
 }
@@ -507,137 +507,25 @@ h2, h3, h4, h5 {
     fill: white;
 }
 
-
-/*SECTION 2*/
-
-#section2-charts, #section2-data{
-    display: inline-block;
-    vertical-align: middle;
-}
-
-#section2-data{
-    min-width: 320px;
-    font-size: 0.8em;
-}
-
-#section2-webisteUl, #section2bis-webisteUl{
-    width: 700px;
-    margin-top: 70px;
-}
-
-#section2-webisteUl li, #section2bis-webisteUl li{
-    display: inline-block;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.section2-data-container div{
-    display: inline-block;
-}
-
-.section2-data-container span{
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#section2-data-container-lower{
-    margin-top: 65px;
-}
-
-#section2-dataAmpoules-lower{
-    float: right;
-    line-height: 5px;
-}
-
-#section2-chartQuantiteDonnees{
-    text-align: center;
-    margin-left: 0px;
-}
-
-#section2-bar-chart-container{
-    display: inline-block;
-    text-align: center;
-    min-width: 230px;
-}
-#section2-sunburst-chart{
-    margin-top: 40px;
-}
-
-/*SECTION 3*/
-#section3 .post{
-    min-width: 400px;
-}
-
-#section3{
-    min-width: 800px;
-    margin-left: -100px;
-}
-
-#section3 .section-title{
-    min-width: 360px;
-}
-
-#section3-websiteList, #section3-chartConsommation{
-    display: inline-block;
-}
-
-#section3-chartConsommation{
-    min-width: 350px;
-}
-
-#section3-websiteList{
-    float: left;
-    margin-top: 10px;
-}
-
-#section3-dataAmpoules div, #section3-dataConsommation div{
-    display: inline-block;
-    margin-left: 5px;
-    margin-right: 5px; 
-}
-#section3-dataAmpoules-lower{
-    float: right;
-    margin-right: 40px;
-}
-
-#section3-chartConsommation div{
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-#section3-webisteUl li{
-    margin-bottom: 10px;
-    color: #CAC09C;
-    background-color: transparent;
-}
-
-#section3-webisteUl li.selected{
-    color: white;
-}
-
-#section3-webisteUl{
-    text-align: left;
-}
-
-/*SECTION 4*/
+/*SECTION 2 MAP*/
 .hoverinfo{
     color:black;
 }
 
-#section4-data-distance{
+#section2-data-distance{
     margin-top: 40px;
 }
 
-#section4-data-terre-lune{
+#section2-data-terre-lune{
     margin-top: 10px;
 }
 
-#section4-websiteUl li{
+#section2-websiteUl li{
     margin-left: 20px;
     margin-right: 20px;
 }
 
-/*SECTION 4 et 5*/
+/*SECTION 2 et 5*/
 #section5-place-Ul li{
     color: #CAC09C;
 }
@@ -646,17 +534,126 @@ h2, h3, h4, h5 {
     color: white;
 }
 
-#section4-websiteUl li, #section5-place-Ul li, #section5-image-list li{
+#section2-websiteUl li, #section5-place-Ul li, #section5-image-list li{
     display: inline-block;
 }
 
-#section4-websiteUl, #section5-place-Ul, #section5-image-list{
+#section2-websiteUl, #section5-place-Ul, #section5-image-list{
     width: 700px;
 }
 
+/*SECTION 3 CONSOMMATION ET DONNEES*/
 
+#section3-charts, #section3-data, #section3bis-charts, #section3bis-data{
+    display: inline-block;
+    vertical-align: middle;
+}
 
-/*SECTION 5*/
+#section3-data, #section3bis-data{
+    min-width: 320px;
+    font-size: 0.8em;
+}
+
+#section3-webisteUl, #section3bis-webisteUl{
+    width: 700px;
+    margin-top: 70px;
+}
+
+#section3-webisteUl li, #section3bis-webisteUl li{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.section3-data-container div{
+    display: inline-block;
+}
+
+.section3-data-container span{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#section3-data-container-lower{
+    margin-top: 65px;
+}
+
+#section3-dataAmpoules-lower{
+    float: right;
+    line-height: 5px;
+}
+
+#section3-chartQuantiteDonnees{
+    text-align: center;
+    margin-left: 0px;
+}
+
+#section3-bar-chart-container{
+    display: inline-block;
+    text-align: center;
+    min-width: 230px;
+}
+#section3-sunburst-chart{
+    margin-top: 40px;
+}
+
+/*SECTION 4 D'AUTRES CONSOMMATIONS'*/
+#section4 .post{
+    min-width: 400px;
+}
+
+#section4{
+    min-width: 800px;
+    margin-left: -100px;
+}
+
+#section4 .section-title{
+    min-width: 360px;
+}
+
+#section4-websiteList, #section4-chartConsommation{
+    display: inline-block;
+}
+
+#section4-chartConsommation{
+    min-width: 350px;
+}
+
+#section4-websiteList{
+    float: left;
+    margin-top: 10px;
+}
+
+#section4-dataAmpoules div, #section4-dataConsommation div{
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px; 
+}
+#section4-dataAmpoules-lower{
+    float: right;
+    margin-right: 40px;
+}
+
+#section4-chartConsommation div{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#section4-webisteUl li{
+    margin-bottom: 10px;
+    color: #CAC09C;
+    background-color: transparent;
+}
+
+#section4-webisteUl li.selected{
+    color: white;
+}
+
+#section4-webisteUl{
+    text-align: left;
+}
+
+/*SECTION 5 MISE A L'ECHELLE'*/
 #section5-place-list{
     margin-top: 30px;
 }
