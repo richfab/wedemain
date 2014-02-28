@@ -134,7 +134,7 @@ footer .point-navigation.selected{
     margin: 0 auto;
 }
 
-#navigation-help, #navigation-help-out{
+#navigation-help2, #navigation-help3{
     position: fixed;
     bottom: 0px;
     left: 0;
@@ -146,12 +146,20 @@ footer .point-navigation.selected{
     transition: all 500ms ease;
 }
 
-#navigation-help.opened, #navigation-help-out.opened{
+#navigation-help2.opened, #navigation-help3.opened{
     bottom: 75px;
 }
 
-#navigation-help *, #navigation-help-out *{
+#navigation-help2 *, #navigation-help3 *{
     display: inline-block;
+}
+
+#liencliquez{
+    cursor: pointer;
+}
+
+#navigation-help1{
+    margin-bottom: 10px;
 }
 
 .infobulle{
@@ -192,6 +200,7 @@ footer .point-navigation.selected{
     color: #CAC09C;
     font-size: 1.5em;
     font-family: Tw;
+    letter-spacing: 1px;
 }
 
 #bouton-continuer, #bouton-retour{
@@ -328,6 +337,7 @@ h3.section-sub-title{
 }
 
 .transition-texte{
+    letter-spacing: 1px;
     color:#FFD34E;
 }
 
@@ -372,6 +382,15 @@ h3.section-sub-title{
 
 .chevron-slector{
     visibility: hidden;
+}
+
+.navigation-help{
+    font-size: 0.9em; 
+    letter-spacing: 2px;
+}
+
+#navigation-help2, #navigation-help3{
+    color: #CAC09C;
 }
 
 /*PRESENTATION*/
@@ -508,6 +527,10 @@ h2, h3, h4, h5 {
 }
 
 /*SECTION 2 MAP*/
+#monde-transition{
+    margin-bottom: 30px;
+}
+
 .hoverinfo{
     color:black;
 }
@@ -654,6 +677,11 @@ h2, h3, h4, h5 {
 }
 
 /*SECTION 5 MISE A L'ECHELLE'*/
+#transition5-wrapper img{
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
 #section5-place-list{
     margin-top: 30px;
 }

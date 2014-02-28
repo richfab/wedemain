@@ -55,9 +55,12 @@
             <div class="strut"></div>
             <div id="titre-post" class="post">
                 <img id="factureenergetique" src="img/factureenergetique.png" />
-                <a id="liencliquez" onclick="leverTitre();">
-                    <img src="img/cliquez.png" />
-                </a>
+                <div id="liencliquez" onclick="leverTitre();">
+                    <h4 class="navigation-help" id="navigation-help1">CLIQUEZ POUR COMMENCER VOTRE VOYAGE</h4>
+                    <p>
+                        <img src="img/chevron-bas.png" />
+                    </p>
+                </div>
             </div>
         </div>
         
@@ -223,12 +226,12 @@
             </div>	
         </div>
             
-        <div id="navigation-help">
-            <h4 style="font-size: 0.9em; letter-spacing: 2px; color: #CAC09C;">DEFILEZ OU CLIQUEZ SUR LA PAGE POUR AVANCER</h4>
+        <div id="navigation-help2" class="navigation-help">
+            <h4>DEFILEZ OU CLIQUEZ SUR LA PAGE POUR AVANCER</h4>
         </div>
         
-        <div id="navigation-help-out">
-            <h4 style="font-size: 0.9em; letter-spacing: 2px; color: #CAC09C;">DEFILEZ OU CLIQUEZ SUR LA PAGE POUR RECULER</h4>
+        <div id="navigation-help3" class="navigation-help">
+            <h4>DEFILEZ OU CLIQUEZ SUR LA PAGE POUR RECULER</h4>
         </div>
         
         <div class="infobulle left" id="intro1">
@@ -322,8 +325,15 @@
             <div id="transition2" class="transition">
                 <div class="strut"></div>
                 <div class="post">
-                    <img style="height: 400px;" src="img/tourdumonde.png"/>
-                    <p>(OU MOINS)</p>
+                    <p class="transition-texte">
+                        <img id="monde-transition" src="img/monde.png"/><br/>
+                        <span style="font-size: 1.3em;vertical-align: top;">LE </span><span style="font-size: 2.5em;line-height: 44px;"> TOUR </span><span style="font-size: 1.3em;">DU</span><br/>
+                        <span style="font-size: 3.1em;">MONDE</span><br/>
+                        <span style="font-size: 1.5em;">EN</span><br/>
+                        <span style="color: white;font-size: 9em;line-height: 120px;">80</span><br/>
+                        <span style="font-size: 3em;">CLICS</span><br/>
+                        <span style="color: white;font-size: 1.2em;">(OU MOINS)</span>
+                    </p>
                 </div>
             </div>
             
@@ -536,12 +546,19 @@
                 </div>
             </div>
             
-                
-            
             <div id="transition5" class="transition">
                 <div class="strut"></div>
                 <div class="post">
-                    <img style="height:340px" src="img/bienlourd.png"/>
+                    <div class="transition-texte" id="transition5-wrapper">
+                        <p style="font-size: 1.2em; color: white;">DÉPENSE ÉNERGÉTIQUE,<br/>VOYAGE EN 1 CLIC,<br/>LOURDEUR NUMÉRIQUE</p>
+                        <img style="width: 40px;" src="img/petitmotif.png"/>
+                        <p>
+                            <span style="font-size: 1.2em;">LE WEB A UN IMPACT REEL</span><br/>
+                            <span style="font-size: 3em; color: white;">&</span><br/>
+                            <span style="font-size: 1.4em; color: white;">PAS SEULEMENT</span><br/>
+                            <span style="font-size: 2em;">VIRTUEL !</span>
+                        </p>
+                    </div>
                 </div>
             </div>
             
@@ -653,13 +670,8 @@
         <script type="text/javascript" src="d3-js/tools.js"></script>
         <script type="text/javascript" src="d3-js/section1-d3.js"></script>
         <script type="text/javascript" src="d3-js/section2-d3.js"></script>
-        <!--<script type="text/javascript" src="d3-js/section2bis-d3.js"></script>-->
         <script type="text/javascript" src="d3-js/section3-d3.js"></script>
         <script type="text/javascript" src="d3-js/section4-d3.js"></script>
         <script type="text/javascript" src="d3-js/section5-d3.js"></script>
-        
-        <script>
-            //                        activateHorizontalScroll();
-        </script>
     </body>
 </html>

@@ -43,7 +43,7 @@ function leverTitre(){
     $("html, body").animate({scrollTop:titreHeight+60}, 1000);
     //on affiche l'aide a la navigation
     if(isZoomIn){
-        $("#navigation-help").addClass("opened");
+        $("#navigation-help2").addClass("opened");
     }
 }
 
@@ -150,7 +150,7 @@ function activateHorizontalScroll(section,distToScrollUp,wantToScrollUpZoomIn){
     }
     
     //on s'assure d'avoir fermer les aides à la navigation
-    $("#navigation-help, #navigation-help-out").removeClass("opened");
+    $("#navigation-help2, #navigation-help3").removeClass("opened");
     //on reaffiche le tooltip qui supprime la scroll bar horizontale
     $('#tooltip-hide-scroll').tooltipster('show');
     
@@ -246,7 +246,7 @@ function activateTravelling(wantZoomIn){
     
     //on affiche l'aide a la navigation du zoom out
     if(!wantZoomIn){
-        $("#navigation-help-out").addClass("opened");
+        $("#navigation-help3").addClass("opened");
     }
     
     window.setTimeout(function(){  
