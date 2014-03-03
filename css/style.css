@@ -169,6 +169,36 @@ footer .point-navigation.selected{
     -moz-transition: all 1s ease;  
     -o-transition: all 1s ease;  
     transition: all 1s ease; 
+    -webkit-perspective:900px; /* Chrome, Safari, Opera */
+    perspective:900px;
+    font-size: 2em;
+    letter-spacing: 4px;
+    line-height: 40px;
+}
+
+.infobulle-content-left{
+    -webkit-transform: rotateY(45deg); /* Chrome, Safari, Opera */
+    transform: rotateY(45deg);
+    text-align: left;
+}
+
+.infobulle-content-right .highlight{
+    color: #A93721;
+}
+
+.infobulle-content-left .highlight{
+    color: #CF8F0B;
+}
+
+.infobulle-content-right{
+    -webkit-transform: rotateY(-45deg); /* Chrome, Safari, Opera */
+    transform: rotateY(-45deg);
+    text-align: right;
+}
+
+#conclu3{
+    font-size: 3em;
+    line-height: 60px;
 }
 
 
@@ -788,41 +818,41 @@ h2, h3, h4, h5 {
 }
 
 #conclusion li {
-	cursor: default;
+    cursor: default;
 }
 #conclusion a {
-	color: white;
+    color: white;
 }
 #conclusion .partenaires {
-	height: 50px;
+    height: 50px;
 }
 #conclusion #bandeau-partenaires {
-	letter-spacing: 10px;
+    letter-spacing: 10px;
 }
 #conclusion .commons {
-	height: 40px;
-        display: inline-block;
-        vertical-align: middle;
+    height: 40px;
+    display: inline-block;
+    vertical-align: middle;
 }
 #conclusion #bandeau-commons {
-	float: left;
-	margin-left: 60px;
+    float: left;
+    margin-left: 60px;
 }
 #conclusion #hyblab {
-	height: 50px;
-	display: inline-block;
-	vertical-align: middle;
+    height: 50px;
+    display: inline-block;
+    vertical-align: middle;
 }
 #conclusion #bandeau-hyblab {
-	float: right;
-	margin-right: 60px;
+    float: right;
+    margin-right: 60px;
 }
 #conclusion #projet {
-	font-family: Oswald;
-	font-weight: 100;
-	letter-spacing: 2px;
-	font-size: 16px;
-	color: black;
-	display: inline-block;
-	vertical-align: middle;
+    font-family: Oswald;
+    font-weight: 100;
+    letter-spacing: 2px;
+    font-size: 16px;
+    color: black;
+    display: inline-block;
+    vertical-align: middle;
 }
